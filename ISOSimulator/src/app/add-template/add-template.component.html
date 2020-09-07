@@ -1,0 +1,179 @@
+<style>
+    .card-header {
+        padding: 0.75rem 32.25rem;
+        margin-bottom: 0;
+        background-color: rgba(0, 0, 0, .03);
+        border-bottom: 1px solid rgba(0, 0, 0, .125);
+        margin-left: 2px;
+        width: 100%;
+        font-size: large;
+        font-weight: bold;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .row{
+   font-size:14px;
+ }
+    /* label {
+        margin-left: 150px;
+    } */
+  </style>
+  <div class="card-m-3 comp3" >
+    <h5 class="card-header">{{title}}</h5>
+    <div class="card-body">
+        <!--<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" [mustMatch]="['password', 'confirmPassword']" novalidate>-->
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
+  
+            <div>
+                <div class="textcenter">
+                    <button class="btn btn-primary mr-1">{{button}}</button>
+                    <a [routerLink]="['/Template-Configuration']"><button class="btn btn-secondary">Cancel</button></a>
+                </div>
+            </div><br>
+  
+            <div class="form-row">
+                <div class="form-group col-3">
+                    <label>Enter Template Name </label></div>
+                <div class="form-group col-5">
+                    <input type="text" name="msgName" placeholder="Enter Template Name" class="form-control" [(ngModel)]="model.msgName" #msgName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && msgName.invalid }" required>
+                    <div *ngIf="f.submitted && msgName.invalid" class="invalid-feedback">
+                        <div *ngIf="msgName.errors.required">Template Name is required</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="form-row">
+                <div class="form-group col-3">
+                    <label>Select Test Scheme </label></div>
+                <div class="form-group col-5">
+                    <select name="Scheme" placeholder="Select Test Scheme" class="form-control" [(ngModel)]="model.Scheme" #Scheme="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && Scheme.invalid }" required>
+                <option value="VisaSMSAcquirer" selected>Visa:SMS Acquirer</option>
+                <option value="VisaSMSIssuer">Visa:SMS Issuer</option>
+                <option value="VisaPOSIssuer">Visa:POS Acquirer</option>
+                <option value="VisaPOSIssuer">Visa:POS Issuer</option>
+                <option value="MastercardAcquirer">MasterCard Acquirer</option>
+                <option value="MastercardIssuer">MasterCard Issuer</option>
+            
+            <div *ngIf="f.submitted && Scheme.invalid" class="invalid-feedback">
+                <div *ngIf="Scheme.errors.required">Please select a scheme</div>
+            </div>
+        </select>
+                </div>
+            </div> -->
+  
+            <div class="form-row">
+                <div class="form-group col-3">
+                    <label>Select Message Type    </label></div>
+                <div class="form-group col-5">
+                    <select name="msgType" selected class="form-control" [(ngModel)]="model.msgType" #msgType="ngModel" required>
+                    <option value="200">0200</option>
+                    <option value="210">0210</option>
+                    <option value="800">0800</option>
+                    <option value="810">0810</option>
+                    <option value="220">0220</option>
+                    <option value="420">0420</option>
+                    <option value="230">0230</option>
+                    <option value="430">0430</option>
+                  </select>
+                    <div *ngIf="f.submitted && msgType.invalid" class="invalid-feedback">
+                        <div *ngIf="msgType.errors.required">Message Type is required</div>
+                    </div>
+                </div>
+            </div>
+  
+            <!-- <div class="form-row">
+                <div class="form-group col-3">
+                    <label>Status of Template </label></div>
+                <div class="form-group col-5">
+                    <select name="Status" selected class="form-control" [(ngModel)]="model.Status" #Status="ngModel" required>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inctive</option>
+                  </select>
+                    <div *ngIf="f.submitted && Status.invalid" class="invalid-feedback">
+                        <div *ngIf="Status.errors.required">Status is required</div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="form-row">
+              <div class="form-group col-3">
+                  <label>Select Schema  </label></div>
+              <div class="form-group col-5">
+            <select name="schemaID"   placeholder="Select Test Schema" class="form-control" [(ngModel)]="model.schemaID" #schemaID="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && schemaID.invalid }" >
+              <option value="" selected="selected" >Select a Schema</option>
+              <option value="1" >Visa:SMS Acquirer</option>
+              <option value="2">Visa:SMS Issuer</option>
+              <option value="3">Visa:POS Acquirer</option>
+              <option value="4">Visa:POS Issuer</option>
+              <option value="4">MasterCard Acquirer</option>
+              <option value="6">MasterCard Issuer</option>
+              </select>
+              <div *ngIf="f.submitted && schemaID.invalid" class="invalid-feedback">
+                <div *ngIf="schemaID.errors.required">Schema is required</div>
+            </div>
+        </div>
+    </div><br>
+    <ng-container *ngIf="CheckedDataElements">
+
+        <!-- <p>Checked Data Elements to be displayed </p> -->
+        <div class="form-group col-3">
+          <ul class="checkbox-items">
+              <input type="hidden" name="templateInd" id="templateInd"[(ngModel)]="model.templateInd"/>
+              <li style="list-style: none; margin-bottom: 5px;" *ngFor="let dataElement of result;let i=index">
+                <div *ngIf="!dataElement.sub ">
+                    <p name="{{dataElement.num}}" id="{{dataElement.id}}" [(ngModel)]="dataElement.isChecked">{{dataElement.label}}
+                        <!-- <input type="text" name="value{{item.id}}" class="textfields"  value="{{item.value}}" [(ngModel)]="item.value" (change)="changeSelection()"> -->
+                        <select (change)="changeValue()" name="{{dataElement.num}}" class="form-control" [(ngModel)]="dataElement.dataElement" #dataElement.de="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && dataElement.id.invalid }" >
+                            <option value="**SYSTEM**">System</option>
+                            <option value="**CARD**">Card</option>
+                            <option value="**TRMNL PRFL**">Terminal Profile</option>
+                            <option value="**MANUAL**">Manual</option>
+                            <option value="**NOT REQUIRED**">Not Required</option>
+                            </select>
+                    </p>
+                  <input type="hidden" name ="de{{dataElement.num}}" id={{dataElement.id}} [(ngModel)]="dataElement.dataElement"/>
+                 <!--<a (click) ="removeDE(dataElement)" ><mat-icon>clear</mat-icon></a>-->
+                </div>
+      
+      
+              </li>
+      
+          </ul><br>
+      </div>
+      </ng-container>
+            <div class=" col-4">
+               
+                <a htef="" (click)="addDataElements()" style="color: blue;"><mat-icon>add</mat-icon>Add Data Elements</a>
+  
+                <!-- <a href="#" (click)="addDataElements()" id="dataelement">
+                    <mat-icon>add</mat-icon>Add Data Element</a> -->
+            </div><br>
+  
+            <!-- To Show all Data Elements of Visa-->
+            <ng-template #callAPIDialog>
+                <h1 mat-dialog-title>Select DataElements </h1>
+            <ng-container *ngIf="CheckedDataElements && AllDataElements">
+                <mat-dialog-actions style="text-align:right; margin-left: 500px;">
+                    <button mat-raised-button matDialogClose="Close">Cancel</button>
+                    <button mat-raised-button matDialogClose="Add" (click)="intersection()">Ok</button>
+                </mat-dialog-actions>
+                <div class="row comp3">
+  
+                    <div class="form-group col-12">
+                        <ul class="checkbox-items">
+                            <li style="list-style: none; margin-bottom: 5px;" *ngFor="let item of DataElements">
+                              <div *ngIf="!item.sub ">
+                                <input type="checkbox" name="{{item.num}}" id="{{item.num}}" [(ngModel)]="item.isChecked" [ngModelOptions]="{standalone: true}" (change)="changeSelection(); getCheckboxValues($event,item.id)">{{item.label}}
+                                <!-- <input type="text" name="value{{item.id}}" class="textfields" value="{{item.value}}" [(ngModel)]="item.isChecked" (change)="changeSelection()"> -->
+                              </div>
+  
+  
+                            </li>
+  
+                        </ul><br>
+                    </div>
+  
+                </div>
+            </ng-container>
+        </ng-template>
+        </form>
+    </div>
+  </div>

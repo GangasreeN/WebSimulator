@@ -1,0 +1,112 @@
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+    border-color: #ffffff;
+    border-top: 3px solid #333333;
+  }
+  .foot-text-center {
+  position: relative;
+  bottom: -570px;
+  text-align: center;
+  background-color: white;
+  height: 10px;
+  color: black;
+  }
+
+  #user-profile{
+    position: absolute;
+    left: 1276px;
+    top: 28px;
+    color: black;
+    text-size-adjust: 10px;
+    font-size: 16px ;
+    font-family: -webkit-body;
+}
+
+#Home{
+  position: absolute;
+  left: 1200px;
+  top: 41px;
+    color: #006de3;
+    text-size-adjust: 10px;
+    font-size: small;
+    font-family: -webkit-body;
+}
+
+#logout{
+  position: absolute;
+  left: 1400px;
+    top: 43px;
+    color: #f50c0c;
+    text-size-adjust: 10px;
+    font-size: small;
+    font-family: -webkit-body;
+}
+
+#logout-icon{
+    position: absolute;
+    left: 1229px;
+    top: 46px;
+    color: white;
+    font-size: small;
+    font-family: -webkit-body;
+  }
+  .col-sm-3 {
+    flex: 0 0 25%;
+    max-width: 30%;
+  }
+
+  /* On small screens, set height to 'auto' for sidenav and grid */
+  @media screen and (max-width: 767px) {
+    .sidenav {
+      height: auto;
+      padding: 15px;
+    }
+    .row.content {height: auto;} 
+  }
+  .row{float: left;}
+  .navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+
+  .navbar-inverse {
+  background-color:white;
+  border-color: #ffffff;
+  border-bottom: 3px solid #333333;
+  position: relative;
+  height: 116px;
+  
+}
+  
+  /* Add a gray background color and some padding to the footer */
+  footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+    width: 100%;
+  }
+
+  /* Set gray background color and 100% height */
+  .sidenav {
+    background-color: #f1f1f1;
+    height: 100%;
+  }
+
+  .home{
+    position: absolute;
+    left: 435px;
+    max-width: 700px;
+}
+
+
+.left-menu-bar{
+  height: 100%;
+}
+
+.title-align{
+  left: 504px;
+    position: relative;
+    top: -46px;
+   font:bolder;
+   color:#ff0000fa;
+}

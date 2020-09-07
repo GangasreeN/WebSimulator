@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Add Message </h1>
+
+<div class="form-group col-12">
+    <ul class="checkbox-items">
+        <li   style="list-style: none; margin-bottom: 5px;" *ngFor="let item of data">
+           <!--<input type="checkbox" name="{{item.msgName}}" id="msg{{item.msgId}}" [(ngModel)]="item.isChecked" [ngModelOptions]="{ standalone: true }" (change)="getCheckboxValues($event,item.msgIND,item.msgId)" />{{ item.msgName }}-->
+           <input type="checkbox" name="msg[]" id="msg{{item.msgId}}" value="{{item.msgId}}" [(ngModel)]="item.isChecked" [ngModelOptions]="{ standalone: true }" (change)="getCheckboxValues($event,item.msgId)" />{{ item.msgName }}
+           
+        </li>
+        
+    </ul>
+    <br />
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button [mat-dialog-close]="data.pickedMsg" cdkFocusInitial>Add</button>
+</div>

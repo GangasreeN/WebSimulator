@@ -1,0 +1,57 @@
+<style>
+  .card-header{
+    padding: 0.75rem 32.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    margin-left: 2px;
+    width: 1260px;
+  }
+</style>
+<html>
+  <div>
+    <h5 class="card-header">Template Configuration</h5>
+    <a [routerLink]="['/Add-Template']"><button class="btn btn-primary mr-1 mat-elevation-z8" id="btn-align">Add Template</button></a
+    >
+    </div>
+
+  <table class="table mat-elevation-z8 table-striped" id="table">
+    <thead style="font-weight: bold;">
+      <tr>
+        <td>S.No</td>
+        <td>Template Name</td>
+        <td>Type</td>
+        <td >Actions</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let t of templateData | paginate: { id: 'listing_pagination',
+      itemsPerPage: 10,
+      currentPage: page,
+      totalItems: totalRecords };let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ t.msgName }}</td>
+        <td>{{ t.msgType }}</td>
+        
+        <td style="justify-items: center;">
+          <a [routerLink]="['/Edit-Template', t.msgId, 1]"
+            ><mat-icon  matTooltip="Edit"
+            matTooltipClass="icon-tooltip-red"
+            aria-label="Button that shows a red tooltip"
+            class="icon-button">edit</mat-icon></a >
+       
+          <a (click)="deleteTemplate(t.msgId)"
+            ><mat-icon  matTooltip="Delete"
+            matTooltipClass="icon-tooltip-red"
+            aria-label="Button that shows a red tooltip"
+            class="icon-button">delete</mat-icon></a
+          >
+        </td> 
+      </tr>
+      
+    </tbody>
+<pagination-controls  id="listing_pagination" maxSize="10" directionLinks="true" (pageChange)="page = $event" ></pagination-controls>
+
+  </table>
+</html>

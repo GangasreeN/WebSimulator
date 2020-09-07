@@ -1,0 +1,29 @@
+#head-align {
+    margin-left: 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+#btn-align {
+    margin-left: 24px;
+    margin-top: 12px;
+}
+
+#table {
+    position: absolute;
+    top: -37px;
+}
+
+
+.required
+{
+    color: red;
+}
+
+div.comp3 {
+    height: 755px;
+    width: 1275px;
+    left:310px;
+    overflow-y: scroll;
+  }

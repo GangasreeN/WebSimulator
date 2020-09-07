@@ -1,0 +1,38 @@
+
+<html>
+  <body>
+    <h2>Task Management</h2>
+    <a [routerLink]="['/Task-detail', projectId]"><button class="btn btn-primary mr-1">Add Task Detail</button></a>
+    <div> <br></div>
+  </body>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+        <td>Task Name</td>
+        <td>Story Count</td>
+        <td>Start Date</td>
+        <td>End Date</td>
+        <td>No. Of Days</td>
+        <td>Completion Percentage</td>
+        <td>RAG Status</td>
+        <td>Work Status</td>
+        <td colspan="2">Actions</td>
+    </tr>
+    </thead>
+  
+    <tbody>
+        <tr *ngFor="let p of Project">
+            <td>{{ p.taskName }}</td>
+            <td>{{ p.storyCount }}</td>
+            <td>{{ p.startDate | date: 'dd/MM/yyyy'}}</td>
+            <td>{{ p.endDate | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ p.days }}</td>
+            <td>{{ p.completePercent }} %</td>
+            <td>{{ p.ragStatus }}</td>
+            <td>{{ p.workStatus }}</td>
+            <td><a [routerLink]="['/EditTask-detail', p._id,1]" ><mat-icon>edit</mat-icon></a></td>
+            <td><a (click) = "deleteTask(p._id)" ><mat-icon>delete</mat-icon></a>
+        </tr>
+    </tbody>
+  </table>
+  </html>

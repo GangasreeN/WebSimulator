@@ -1,0 +1,76 @@
+<style>
+  .card-header{
+    padding: 0.75rem 32.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    margin-left: 2px;
+    width: 100%;
+  }
+</style>
+<div class="card-m-3">
+  <h5 class="card-header">{{title}}</h5>
+  <div class="card-body">
+      <!--<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" [mustMatch]="['password', 'confirmPassword']" novalidate>-->
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+         
+             
+              <div class="form-group col-4">
+
+                  <label>User Name</label>
+
+                  <input type="text" name="userName" placeholder="Enter User Name"  readonly class="form-control" [(ngModel)]="model.userName" #userName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userName.invalid }" required>
+                  <div *ngIf="f.submitted && userName.invalid" class="invalid-feedback">
+                      <div *ngIf="userName.errors.required">User Name is required</div>
+                  </div>
+              </div>
+              <div class="form-group col-4">
+                  <label>Email ID</label>
+                  <input type="email" name="emailId" placeholder="Enter Email" readonly  class="form-control" [(ngModel)]="model.emailId" #emailId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && emailId.invalid }"
+                      required>
+                  <div *ngIf="f.submitted && emailId.invalid" class="invalid-feedback">
+                      <div *ngIf="emailId.errors.required">Email ID is required</div>
+                  </div>
+              </div>
+              <div class="form-group col-4">
+
+                  <label>Employee ID</label>
+                  <input type="number" name="userProfileId" placeholder="Enter Employee ID"  readonly class="form-control" [(ngModel)]="model.userProfileId" #userProfileId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userProfileId.invalid }" required>
+                  <!-- <div *ngIf="f.submitted && empId.invalid" class="invalid-feedback">
+                      <div *ngIf="empId.errors.required">Employee ID is required</div>
+                  </div> -->
+              </div>
+             
+              <div class="form-group col-4">
+                <label>Role</label>
+                <input type="text" name="role" selected  class="form-control" readonly [(ngModel)]="model.role" #role="ngModel" required>
+                <div *ngIf="f.submitted && role.invalid" class="invalid-feedback">
+                    <div *ngIf="role.errors.required">Role is required</div>
+                </div>
+            </div>
+         
+          
+            <div class="form-group col-4">
+              <label>Time Zone</label>
+              <select name="timeZone" placeholder="Select" class="form-control" [(ngModel)]="model.timeZone" #timeZone="ngModel" required>
+                <option value="UTC+05:30.">India Standard Time - UTC +5:30</option>
+                <option value="UTC+01:00"
+                  >Central European Time - UTC+01:00</option
+                >
+                <option value="UTC+04:00">UAE Standard Time - UTC+04:00</option>
+              </select>
+              <div *ngIf="f.submitted && timeZone.invalid" class="invalid-feedback">
+                  <div *ngIf="timeZone.errors.required">Time Zone is required</div>
+              </div>
+          </div>
+          <div >
+              <div class="text-center">
+                  <button class="btn btn-primary mr-1">{{title}}</button>
+                  <a [routerLink]="['/Change-Password']">Change password</a
+                    >
+                  <!-- <button class="btn btn-secondary" type="reset">Cancel</button> -->
+              </div>
+          </div>
+      </form>
+  </div>
+</div>

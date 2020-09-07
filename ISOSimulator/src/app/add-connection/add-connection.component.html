@@ -1,0 +1,214 @@
+<style>
+  .card-header{
+    padding: 0.75rem 32.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    margin-left: 2px;
+    width: 100%;
+  }
+</style>
+
+<div class="card-m-3 comp3">
+  <h5 class="card-header">{{title}}</h5><br>
+  <div class="card-body">
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+          <div class="form-row">
+              <div class="form-group col-3">
+                  <label>Connection Name :</label><span class="required">*</span></div>
+              <div class="form-group col-7">
+                  <input type="text" name="connectionName" placeholder="Enter Connection Name " [readonly]="isReadonly" class="form-control" [(ngModel)]="model.connectionName" #connectionName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && connectionName.invalid }" required>
+                  <div *ngIf="f.submitted && connectionName.invalid" class="invalid-feedback">
+                      <div *ngIf="connectionName.errors.required">connection Name is required</div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- <div class="form-row">
+              <div class="form-group col-3">
+                  <label>IP Address :</label><span class="required">*</span></div>
+              <div class="form-group col-7">
+                  <input type="text" name="ip" placeholder="Enter IP Address " class="form-control" [(ngModel)]="model.ip" #ip="ngModel" [ngClass]="{ 'is-invalid': f.submitted && ip.invalid }" required>
+                  <div *ngIf="f.submitted && ip.invalid" class="invalid-feedback">
+                      <div *ngIf="ip.errors.required">IP Address is required</div>
+                  </div>
+              </div>
+          </div> -->
+          <!-- <div class="form-row">
+              <div class="form-group col-3">
+                  <label>Port Number :</label><span class="required">*</span></div>
+              <div class="form-group col-7">
+                  <input type="text" name="port" placeholder="Enter port Number " [readonly]="isReadonly"class="form-control" [(ngModel)]="model.port" #port="ngModel" [ngClass]="{ 'is-invalid': f.submitted && port.invalid }" required>
+                  <div *ngIf="f.submitted && port.invalid" class="invalid-feedback">
+                      <div *ngIf="port.errors.required">Port Number is required</div>
+                  </div>
+              </div>
+          </div> -->
+          <div class="form-row">
+              <div class="form-group col-3">
+                  <label>Server Port :</label><span class="required">*</span></div>
+              <div class="form-group col-7">
+                  <input type="text" name="serverPort" placeholder="Enter Server port Number " class="form-control" [(ngModel)]="model.serverPort" #port="ngModel" [ngClass]="{ 'is-invalid': f.submitted && serverPort.invalid }" required>
+                  <div *ngIf="f.submitted && serverPort.invalid" class="invalid-feedback">
+                      <div *ngIf="serverPort.errors.required">Server Port is required</div>
+                  </div>
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-3">
+                  <label>System Port :</label><span class="required">*</span></div>
+              <div class="form-group col-7">
+                  <input type="text" name="systemPort" placeholder="Enter System port Number " class="form-control" [(ngModel)]="model.systemPort" #port="ngModel" [ngClass]="{ 'is-invalid': f.submitted && systemPort.invalid }" required>
+                  <div *ngIf="f.submitted && systemPort.invalid" class="invalid-feedback">
+                      <div *ngIf="systemPort.errors.required">System Port is required</div>
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="form-row">
+            <div class="form-group col-3">
+                <label>Server IP :</label><span class="required">*</span></div>
+             <div class="form-group col-7">
+                <input type="text" name="serverIP" placeholder="Enter Server IP " class="form-control" [(ngModel)]="model.serverIP" #port="ngModel" [ngClass]="{ 'is-invalid': f.submitted && serverIP.invalid }" required>
+                <div *ngIf="f.submitted && serverIP.invalid" class="invalid-feedback">
+                    <div *ngIf="serverIP.errors.required">Server IP is required</div>
+                </div>
+            </div>
+         </div>
+          <div class="form-row">
+            <div class="form-group col-3">
+                <label>System IP :</label><span class="required">*</span></div>
+             <div class="form-group col-7">
+                <input type="text" name="systemIP" placeholder="{{ ipAddress }}" class="form-control" [(ngModel)]="model.systemIP" #port="ngModel" [ngClass]="{ 'is-invalid': f.submitted && systemIP.invalid }"  required>
+                <div *ngIf="f.submitted && systemIP.invalid" class="invalid-feedback">
+                    <div *ngIf="systemIP.errors.required">System IP is required</div>
+                </div>
+            </div>
+         </div>
+          <!-- <div *ngIf="model.network=='VISA'">
+
+              <div class="form-row">
+                  <div class="form-group col-3">
+                      <label>Source ID :</label></div>
+                  <div class="form-group col-7">
+                      <input type="number" name="sourceId" placeholder="Enter Source ID " class="form-control" [(ngModel)]="model.sourceId" #sourceId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && sourceId.invalid }" required>
+                      <div *ngIf="f.submitted && sourceId.invalid" class="invalid-feedback">
+                          <div *ngIf="sourceId.errors.required">Source ID is required</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group col-3">
+                      <label>Destination ID :</label></div>
+                  <div class="form-group col-7">
+                      <input type="number" name="destinationId" placeholder="Enter Destination ID " class="form-control" [(ngModel)]="model.destinationId" #destinationId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && destinationId.invalid }" required>
+                      <div *ngIf="f.submitted && destinationId.invalid" class="invalid-feedback">
+                          <div *ngIf="destinationId.errors.required">Destination ID is required</div>
+                      </div>
+                  </div>
+              </div>
+          </div> --> 
+          <div class="form-row">
+              <div class="form-group col-3">
+                <label>Select Network :</label><span class="required">*</span></div>
+            <div class="form-group col-7">
+                <select name="networkType" placeholder="Select" class="form-control" [(ngModel)]="model.networkType" #networkType="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && networkType.invalid }" required>
+                    <option value="VISA">Visa</option>
+                    <option value="mastercard" selected>Master Card</option>
+                </select>
+            </div>
+        </div>
+
+
+
+
+
+          <div class="form-row">
+              <div class="form-group col-3">
+                  <label>Outbound Key :</label><span class="required">*</span></div>
+              <div class="form-group col-7">
+                  <input type="text" name="outBoundKey1" placeholder="Enter Outbound Key 1 " class="form-control" [(ngModel)]="model.outBoundKey1" #outBoundKey1="ngModel" [ngClass]="{ 'is-invalid': f.submitted && outBoundKey1.invalid }" required>
+                  <div *ngIf="f.submitted && outBoundKey1.invalid" class="invalid-feedback">
+                      <div *ngIf="outBoundKey1.errors.required">Outbound Key 1 is required</div>
+                  </div>
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-3">
+                  <label>Inbound Key :</label></div>
+              <div class="form-group col-7">
+                  <input type="text" name="outBoundKey2" placeholder="Enter Outbound Key 2 " class="form-control" [(ngModel)]="model.outBoundKey2" #outBoundKey2="ngModel" [ngClass]="{ 'is-invalid': f.submitted && outBoundKey2.invalid }" >
+                  <div *ngIf="f.submitted && outBoundKey2.invalid" class="invalid-feedback">
+                      <div *ngIf="outBoundKey2.errors.required">Outbound Key 2 is required</div>
+                  </div>
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-3">
+                  <label>KeyExchange Key :</label></div>
+              <div class="form-group col-7">
+                  <input type="text" name="outBoundKey3" placeholder="Enter Outbound Key 3 " class="form-control" [(ngModel)]="model.outBoundKey3" #outBoundKey3="ngModel" [ngClass]="{ 'is-invalid': f.submitted && outBoundKey3.invalid }" >
+                  <div *ngIf="f.submitted && outBoundKey3.invalid" class="invalid-feedback">
+                      <div *ngIf="outBoundKey3.errors.required">Outbound Key 3 is required</div>
+                  </div>
+              </div>
+          </div>
+          <!--<div class="form-row">
+              <div class="form-group col-3">
+                  <label>Message Format :</label></div>
+              <div class="form-group col-7">
+                  <select name="msgformat" placeholder="Select" class="form-control" [(ngModel)]="model.msgformat" #msgformat="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && msgformat.invalid }" required>
+                      <option value="ascii" selected>ASCII</option>
+                      <option value="binary">Binary</option>
+                      <option value="ebcdic">Ebcdic</option>
+                  </select>
+              </div>
+          </div>-->
+          <!-- <div class="form-row">
+              <div class="form-group col-3">
+                  <label>Packed Information :</label></div>
+              <div class="form-group col-7">
+                  <select name="packedInfo" placeholder="Select" class="form-control" [(ngModel)]="model.packedInfo" #packedInfo="ngModel" required [ngClass]="{ 'is-invalid': f.submitted && packedInfo.invalid }" required>
+                      <option value="packed">Packed</option>
+                      <option value="unpacked" selected>Unpacked</option>
+                  </select>
+              </div>
+          </div> -->
+
+
+          <!--<div class="form-row">
+              <div class="form-group col-4">
+                  <label>Packed Information :</label></div>
+              <div class="form-group col-2">
+                  <input type="radio" class="form-check-input" id="packed" name="packedInfo" [(ngModel)]="template" [value]="packed">
+                  <label class="form-check-label" for="ascii">Packed</label>
+              </div>
+
+              <div class="form-group col-2">
+                  <input type="radio" class="form-check-input" id="unpacked" name="packedInfo" [(ngModel)]="template" [value]="unpacked">
+                  <label class="form-check-label" for="binary">Unpacked</label>
+              </div>
+          </div><br>-->
+          <div class="form-row">
+            <div class="form-group col-3">
+                <label>
+                <input
+                type="checkbox"
+                name="keyVarient"
+                [checked]="keyVariant"
+                (change)="keyVariant = !keyVariant"> Key Variant
+             </label>
+            </div>
+        </div>
+
+
+          <div class="text-center">
+              <button class="btn btn-primary mr-1">{{title}}</button>
+              <a [routerLink]="['/List-Connection']"><button class="btn btn-secondary">Cancel</button></a>
+
+          </div>
+      </form>
+  </div>
+</div>

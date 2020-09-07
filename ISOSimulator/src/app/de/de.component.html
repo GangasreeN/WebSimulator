@@ -1,0 +1,1784 @@
+<style>
+  .card-header{
+    padding: 0.75rem 32.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    margin-left: 2px;
+    width: 100%;
+  }
+</style>
+
+
+    
+<div class="card-m-3 comp3">
+  <h5 class="card-header">Data Elements</h5>
+  <div class="card-body">
+      <!--<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" [mustMatch]="['password', 'confirmPassword']" novalidate>-->
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <div class="form-row">
+              <legend>Data Elements :</legend><br>
+              
+          </div>
+<!-- DE001 -->
+          <div class="form-row">
+            <div class="form-group col-2">
+                <label>DE001 - BITMAP :</label><span class="required">*</span></div>
+            <div class="form-group col-3">
+              <select name="de001" selected  class="form-control" [(ngModel)]="model.de001"  #de001="ngModel" required>
+                <option value="**SYSTEM**">SYSTEM</option>
+                </select>
+                <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+
+                  <div *ngIf="sourceID.errors.required">Source Id is required</div>
+                </div>
+            </div>
+        </div>
+<!-- DE002 -->
+          <div class="form-row">
+            <div class="form-group col-2">
+                <label>DE002 - PAN :</label><span class="required">*</span></div>
+            <div class="form-group col-3">
+              <select name="de002" selected class="form-control" [(ngModel)]="model.de002"  #de002="ngModel" required>
+                <option value="**CARD PRFL**">CARD PROFILE</option>
+                <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+                <option value="**SYSTEM**">SYSTEM</option>
+                <option value="**MANUAL**">MANUAL</option>
+                 <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+               </select>
+                <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+                  <div *ngIf="sourceID.errors.required">Source Id is required</div>
+              </div>
+            </div>
+            <div class="form-group" *ngIf="model.de002 == '**MANUAL**'">
+              <input class="form-control" type="text" (keypress)="lettersOnly($event)" minlength="16" maxlength="19" [(ngModel)]="model.inputde002" name="inputde002">
+            
+            </div>
+        </div>
+
+        <!-- DE003 -->
+          <div class="form-row">
+            <div class="form-group col-2">
+                <label>DE003 - Processing Code :</label><span class="required">*</span></div>
+  
+            <div class="form-group col-3">
+              <select name="de003" selected  class="form-control" [(ngModel)]="model.de003"  #de003="ngModel" required>
+                <option value="**PROC CODE**">Select PROC Code</option>
+                <option value="**CARD PRFL**">CARD PROFILE</option>
+                <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+                <option value="**SYSTEM**">SYSTEM</option>
+                <option value="**MANUAL**">MANUAL</option>
+                 <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+               </select>
+                <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+                  <div *ngIf="sourceID.errors.required">Source Id is required</div>
+              </div>
+            </div>
+            <div class="form-group" *ngIf="model.de003 == '**PROC CODE**'">
+              <select name="de003" selected class="form-control" [(ngModel)]="model.select1de003"  #de003="ngModel" required>
+                <option value="**00**">00 Purchase</option>
+                <option value="**01**">01 Withdrawal</option>
+                <option value="**02**">02 Debit Adjustment</option>
+                <option value="**03**">11 Quasi Cash</option>
+                <option value="**04**">19 Fee Collection Debit  </option>
+                 <option value="**05**">20 Return \ Credit Vouche</option>
+                 <option value="**06**">21 Deposit</option>
+                 <option value="**07**">22 Credit Adjustment</option>
+                 <option value="**08**">26 OCT</option>
+                 <option value="**09**">28 Prepaid Load</option>
+                 <option value="**10**">29 Funds Disbursement Credit</option>
+                 <option value="**11**">30 Balance Inquiry</option>
+                 <option value="**12**">40 Cardholder Account Transfer</option>
+                 <option value="**13**">50 Bill Payment (U.S. only)</option>
+                 <option value="**14**">72 Prepaid Activation</option>
+               </select>
+            
+            </div>
+            <div class="form-group"  *ngIf="model.de003 == '**PROC CODE**'">
+              <select name="de003" selected  class="form-control" [(ngModel)]="model.select2de003"  #de003="ngModel" required>
+                <option value="**00**">10 Savings Account</option>
+                <option value="**01**">20 Checking Account</option>
+                <option value="**02**">40 Universal Account</option>
+                <option value="**03**">30 Credit Card Account</option>
+               </select>
+            </div>
+            <div class="form-group" *ngIf="model.de003 == '**PROC CODE**'">
+              <select name="de003" selected  class="form-control" [(ngModel)]="model.select3de003"  #de003="ngModel" required>
+                <option value="**00**">10 Savings Account</option>
+                <option value="**01**">20 Checking Account</option>
+                <option value="**02**">40 Universal Account</option>
+                <option value="**03**">30 Credit Card Account</option>
+               </select>
+            </div>
+            <div class="form-group" *ngIf="model.de003 == '**MANUAL**'">
+              <input class="form-control" type="text" (keypress)="lettersOnly($event)" placeholder="Processing Code" minlength="12" maxlength="16" [(ngModel)]="model.inputde003" name="inputde003">
+            
+            </div>
+
+        </div>
+      
+        <!-- DE004 -->
+        <div class="form-row">
+          <div class="form-group col-2">
+              <label>DE004 - Amount,Transaction:</label><span class="required">*</span></div>
+          <div class="form-group col-3">
+            <select name="de004" selected  class="form-control" [(ngModel)]="model.de004"  #de004="ngModel" required>
+              <option value="**MANUAL**">MANUAL</option>
+               <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+             </select>
+              <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+                <div *ngIf="sourceID.errors.required">Source Id is required</div>
+            </div>
+          </div>
+          <div class="form-group" *ngIf="model.de004 == '**MANUAL**'">
+            <input class="form-control"  type="text" (keypress)="lettersOnly($event)" minlength="12" maxlength="12" [(ngModel)]="model.inputde004" name="inputde004">
+          
+          </div>
+      </div>
+        
+      <!-- DE014 -->
+      <div class="form-row">
+        <div class="form-group col-2">
+            <label>DE014 - Date,Expiration :</label><span class="required">*</span></div>
+        <div class="form-group col-3">
+          <select name="de014" selected  class="form-control" [(ngModel)]="model.de014"  #de014="ngModel" required>
+            <option value="**CARD PRFL**">CARD PROFILE</option>
+            <option value="**MANUAL**">MANUAL</option>
+             <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+           </select>
+            <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+              <div *ngIf="sourceID.errors.required">Source Id is required</div>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="model.de014 == '**MANUAL**'">
+          <input class="form-control" type="text" (keypress)="lettersOnly($event)" minlength="6" maxlength="6" [(ngModel)]="model.inputde014" name="inputde014">
+        
+        </div>
+    </div>
+
+    <!-- DE018 -->
+    <div class="form-row">
+      <div class="form-group col-2">
+          <label>DE018 - Merchant Category Code (MCC) :</label><span class="required">*</span></div>
+      <div class="form-group col-3">
+        <select name="de018" selected  class="form-control" [(ngModel)]="model.de018"  #de018="ngModel" required>
+          <option value="**MCC**">Select MCC</option>
+          <option value="**CARD PRFL**">CARD PROFILE</option>
+          <option value="**MANUAL**">MANUAL</option>
+           <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+         </select>
+          <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+            <div *ngIf="sourceID.errors.required">Source Id is required</div>
+        </div>
+      </div>
+      <div class="form-group col-4" *ngIf="model.de018 == '**MCC**'">
+        <select name="de018" selected  class="form-control" [(ngModel)]="model.select1de018"  #de018="ngModel" required>
+          <option value="**00**">5411</option>
+          <option value="**01**">4829</option>
+          <option value="**02**">5542</option>
+          <option value="**03**">6011</option>
+         </select>
+      </div>
+      
+      <div class="form-group" *ngIf="model.de018 == '**MANUAL**'">
+        <input class="form-control" type="text" [(ngModel)]="model.inputde018" name="inputde018">
+      
+      </div>
+  </div>
+
+  <!-- DE019 -->
+  <div class="form-row">
+    <div class="form-group col-2">
+        <label>DE019 - Acquiring Institution Code :</label><span class="required">*</span></div>
+    <div class="form-group col-3">
+      <select name="de019" selected  class="form-control" [(ngModel)]="model.de019"  #de019="ngModel" required>
+        <option value="**CARD PRFL**">CARD PROFILE</option>
+        <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+        <option value="**SYSTEM**">SYSTEM</option>
+        <option value="**MANUAL**">MANUAL</option>
+         <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+       </select>
+        <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+          <div *ngIf="sourceID.errors.required">Source Id is required</div>
+      </div>
+    </div>
+    <div class="form-group" *ngIf="model.de019 == '**MANUAL**'">
+      <input class="form-control" type="text" [(ngModel)]="model.inputde019" name="inputde019">
+    
+    </div>
+</div>
+
+<!-- DE022 -->
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE022 - Point-of-Service Entry Mode Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de022" selected  class="form-control" [(ngModel)]="model.de022"  #de022="ngModel" required>
+      <option value="**POS CODE**">Select POS Code</option>
+      <option value="**CARD PRFL**">CARD PROFILE</option>
+      <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group col-4" *ngIf="model.de022 == '**POS CODE**'">
+    <select name="de022" selected  class="form-control" size="1" [(ngModel)]="model.select1de022"  #de022="ngModel" required>
+      <option value="**00**">00 Unknown</option>
+      <option value="**01**">01 Manual</option>
+      <option value="**02**">02 Magnetic stripe</option>
+      <option value="**03**">03 Bar code</option>
+      <option value="**04**">04 OCR</option>
+       <option value="**05**">05 Integrated circuit card (ICC). CVV can be checked.</option>
+       <option value="**06**">07 Auto entry via contactless EMV.</option>
+       <option value="**07**">10 Merchant has Cardholder Credentials on File.</option>
+       <option value="**08**">80 Fallback from integrated circuit card (ICC) to magnetic stripe</option>
+       <option value="**09**">90 Magnetic stripe as read from track 2. CVV can be checked.</option>
+       <option value="**10**">91 Auto entry via contactless magnetic stripe</option>
+       <option value="**11**">95 Integrated circuit card (ICC). CVV may not be checked.</option>
+       <option value="**12**">99 Same as original transaction.</option>
+     </select>
+  
+  </div>
+  <div class="form-group "  *ngIf="model.de022 == '**POS CODE**'">
+    <select name="de022" selected  class="form-control" [(ngModel)]="model.select2de022"  #de022="ngModel" required>
+      <option value="**00**">00 Unknown</option>
+      <option value="**01**">10 Terminal can accept PINs</option>
+      <option value="**02**">20 Terminal cannot accept PINs</option>
+     </select>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de003 == '**MANUAL**'">
+    <input class="form-control" type="text" minlength="4" maxlength="4" [(ngModel)]="model.inputde022" name="inputde022">
+  
+  </div>
+
+</div>
+
+<!-- DE023 -->
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE023 - Card Sequence Number :</label><span class="required">*</span></div>
+  <div class="form-group col-3">
+    <select name="de023" selected  class="form-control" [(ngModel)]="model.de023"  #de023="ngModel" required>
+      <option value="**CARD PRFL**">CARD PROFILE</option>
+      <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+     
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="model.de023 == '**MANUAL**'">
+    <input class="form-control" type="text" minlength="2" maxlength="2" [(ngModel)]="model.inputde023" name="inputde023">
+  
+  </div>
+</div>
+
+<!-- DE025 -->
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE025 - Point-of-Service Condition Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de025" selected  class="form-control" [(ngModel)]="model.de025"  #de025="ngModel" required>
+      <option value="**POS CONCODE**">Select POS Condition Code</option>
+      <option value="**CARD PRFL**">CARD PROFILE</option>
+      <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="model.de025 == '**POS CONCODE**'">
+    <select name="de025" selected  class="form-control" [(ngModel)]="model.select1de025"  #de025="ngModel" required>
+      <option value="**00**">00</option>
+      <option value="**01**">06</option>
+      <option value="**02**">08</option>
+      <option value="**03**">59</option>
+      <option value="**04**">05  </option>
+       <option value="**05**">51</option>
+     </select>
+  
+  </div>
+    <div class="form-group" *ngIf="model.de025 == '**MANUAL**'">
+    <input class="form-control" type="text" minlength="2" maxlength="2" [(ngModel)]="model.inputde025" name="inputde025">
+  
+  </div>
+
+</div>
+
+<!-- DE026 -->
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE026 - Point-of-Service Capture Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de026" selected  class="form-control" [(ngModel)]="model.de026"  #de026="ngModel" required>
+      <option value="**CARD PRFL**">CARD PROFILE</option>
+      <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+    <div class="form-group" *ngIf="model.de026 == '**MANUAL**'">
+    <input class="form-control" type="text" minlength="2" maxlength="2" [(ngModel)]="model.inputde026" name="inputde026">
+  
+  </div>
+
+</div>
+
+<!-- DE028 -->
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE028 - Amount,Transaction Fee :</label><span class="required">*</span></div>
+  <div class="form-group col-3">
+    <select name="de028" selected  class="form-control" [(ngModel)]="model.de028"  #de028="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="model.de028 == '**MANUAL**'">
+    <input class="form-control"  type="text" minlength="9" maxlength="9" [(ngModel)]="model.inputde028" name="inputde028">
+  
+  </div>
+</div>
+
+<!-- DE032 -->
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE032 - Acquiring Institution Identification Code :</label><span class="required">*</span></div>
+  <div class="form-group col-3">
+    <select name="de032" selected  class="form-control" [(ngModel)]="model.de032"  #de032="ngModel" required>
+      <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="model.de032 == '**MANUAL**'">
+    <input class="form-control"  type="text" minlength="9" maxlength="9" [(ngModel)]="model.inputde032" name="inputde032">
+  
+  </div>
+</div>
+
+<!-- DE033 -->
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE033 - Forwarding Institution Identification Code :</label><span class="required">*</span></div>
+  <div class="form-group col-3">
+    <select name="de033" selected  class="form-control" [(ngModel)]="model.de033"  #de033="ngModel" required>
+      <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="model.de033 == '**MANUAL**'">
+    <input class="form-control"  type="text" [(ngModel)]="model.inputde033" name="inputde033">
+  
+  </div>
+</div>
+
+<!-- DE035 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE035 - Track 2 Data :</label><span class="required">*</span></div>
+  <div class="form-group col-3">
+    <select name="de035" selected  class="form-control" [(ngModel)]="model.de035"  #de035="ngModel" required>
+      <option value="**CARD PRFL**">CARD PROFILE</option>
+      <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="model.de035 == '**MANUAL**'">
+    <input class="form-control"  type="text" [(ngModel)]="model.inputde035" name="inputde035">
+  
+  </div>
+</div>
+
+<!-- DE039 -->
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE039 - Response Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de0039" selected  class="form-control" [(ngModel)]="model.de039"  #de039="ngModel" required>
+      <option value="**RESP CODE**">Select Response Code</option>
+      <option value="**CARD PRFL**">CARD PROFILE</option>
+      <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group " *ngIf="model.de039 == '**RESP CODE**'">
+    <select name="de039" selected  class="form-control" [(ngModel)]="model.select1de039"  #de039="ngModel" required>
+      <option value="**00**">00 Accepted and processed</option>
+      <option value="**01**">05 Do not honor</option>
+      <option value="**02**">10 Partial approval</option>
+      <option value="**04**">11 Approved (V.I.P.)</option>
+      <option value="**05**">52 No checking account</option>
+      <option value="**06**">53 No savings account</option>
+      <option value="**07**">54 Expired card or expiration date
+       missing</option>
+      <option value="**08**">55 PIN incorrect or missing</option>
+      <option value="**03**">96 System malfunction</option>
+     
+      
+       
+     </select> 
+  </div>
+  
+  <div class="form-group" *ngIf="model.de039 == '**MANUAL**'">
+    <input class="form-control" type="text" minlength="2" maxlength="2" [(ngModel)]="model.inputde039" name="inputde039">
+  
+  </div>
+
+</div>
+
+<!-- DE041 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE041 - Card Acceptor Terminal Identification :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de0041" selected  class="form-control" [(ngModel)]="model.de041"  #de041="ngModel" required>
+      <option value="**CATI CODE**">Select Code</option>
+      <option value="**CARD PRFL**">CARD PROFILE</option>
+      <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group " *ngIf="model.de041 == '**CATI CODE**'">
+    <select name="de041" selected  class="form-control" [(ngModel)]="model.select1de041"  #de041="ngModel" required>
+      <option value="**00**">TERMID01</option>
+      <option value="**01**">TERMID02</option>
+      <option value="**02**">TERMID03</option>
+      <option value="**04**">TERMID04</option>          
+     </select> 
+  </div>
+  
+  <div class="form-group" *ngIf="model.de041 == '**MANUAL**'">
+    <input class="form-control" type="text" maxlength="8" [(ngModel)]="model.inputde041" name="inputde041">
+  
+  </div>
+
+</div>
+
+<!-- DE042 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE042 - Card Acceptor Identification Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de0042" selected  class="form-control" [(ngModel)]="model.de042"  #de042="ngModel" required>
+      <option value="**CATC CODE**">Select Code</option>
+      <option value="**CARD PRFL**">CARD PROFILE</option>
+      <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group " *ngIf="model.de042 == '**CATC CODE**'">
+    <select name="de042" selected  class="form-control" [(ngModel)]="model.select1de042"  #de042="ngModel" required>
+      <option value="**00**">CARDACCEPTOR001</option>
+      <option value="**01**">CARDACCEPTOR002</option>
+      <option value="**02**">CARDACCEPTOR003</option>
+      <option value="**04**">CARDACCEPTOR004</option>          
+     </select> 
+  </div>
+  
+  <div class="form-group" *ngIf="model.de042 == '**MANUAL**'">
+    <input class="form-control" type="text" maxlength="15" [(ngModel)]="model.inputde042" name="inputde042">
+  
+  </div>
+
+</div>
+
+<!-- DE043 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE043 - Card Acceptor Name/Location :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de0043" selected  class="form-control" [(ngModel)]="model.de043"  #de043="ngModel" required>
+      <option value="**CARD PRFL**">CARD PROFILE</option>
+      <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="model.de043 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="card acceptor name" maxlength="25" [(ngModel)]="model.input1de043" name="inputde043">
+  
+  </div>
+  <div class="form-group" *ngIf="model.de043 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="city name" maxlength="12" [(ngModel)]="model.input2de043" name="inputde043">
+  
+  </div>
+  <div class="form-group" *ngIf="model.de043 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="country code" maxlength="2" [(ngModel)]="model.input3de043" name="inputde043">
+  
+   </div>
+</div>
+
+<!-- DE044 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE044 - Additional Response Data :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de0044" selected  class="form-control" [(ngModel)]="model.de044"  #de044="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de044 == '**MANUAL**'">
+    <input class="form-control" type="text" maxlength="26" [(ngModel)]="model.inputde044" name="inputde044">
+  
+  </div>
+  
+</div>
+
+<!-- DE045 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE045 - Track 1 Data :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de0045" selected  class="form-control" [(ngModel)]="model.de045"  #de045="ngModel" required>
+      <option value="**CARD PRFL**">CARD PROFILE</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de045 == '**MANUAL**'">
+    <input class="form-control" type="text" [(ngModel)]="model.inputde045" name="inputde045">
+  
+  </div>
+  
+</div>
+
+<!-- DE048 -->
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE048 - Additional Data-Private :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de0048" selected  class="form-control" [(ngModel)]="model.de048"  #de048="ngModel" required>
+      <option value="**CARD PRFL**">CARD PROFILE</option>
+      <option value="**TRMNL PRFL**">TERMINAL PROFILE</option>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de048 == '**MANUAL**'">
+    <input class="form-control" type="text" [(ngModel)]="model.inputde048" name="inputde048">
+  
+  </div>
+  
+</div>
+
+<!-- DE049 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE049 - Currency Code, Transaction :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de0049" selected  class="form-control" [(ngModel)]="model.de049"  #de049="ngModel" required>
+      <option value="**CURR CODE**">Select Code</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group " *ngIf="model.de049 == '**CURR CODE**'">
+    <select name="de049" selected  class="form-control" [(ngModel)]="model.select1de049"  #de049="ngModel" required>
+      <option value="**00**">356 (IN Rupees)</option>
+      <option value="**01**">840 (U.S.dollars)</option>      
+     </select> 
+  </div>
+  
+  <div class="form-group" *ngIf="model.de049 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="Currency Code" minlength="3" maxlength="3" [(ngModel)]="model.inputde049" name="inputde049">
+  
+  </div>
+
+</div>
+
+<!-- DE50 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE050 - Currency Code, Settlement :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de0050" selected  class="form-control" [(ngModel)]="model.de050"  #de050="ngModel" required>
+      <option value="**CURR SCODE**">Select Code</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group " *ngIf="model.de050 == '**CURR SCODE**'">
+    <select name="de050" selected  class="form-control" [(ngModel)]="model.select1de050"  #de050="ngModel" required>
+      <option value="**00**">356 (IN Rupees)</option>
+      <option value="**01**">840 (U.S.dollars)</option>      
+     </select> 
+  </div>
+  
+  <div class="form-group" *ngIf="model.de050 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="Currency Code" minlength="3" maxlength="3" [(ngModel)]="model.inputde050" name="inputde050">
+  
+  </div>
+
+</div>
+
+<!-- DE051 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE051 - Currency Code, Cardholder Billing :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de0051" selected  class="form-control" [(ngModel)]="model.de051"  #de051="ngModel" required>
+      <option value="**CURR BCODE**">Select Code</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group " *ngIf="model.de051 == '**CURR BCODE**'">
+    <select name="de051" selected  class="form-control" [(ngModel)]="model.select1de051"  #de051="ngModel" required>
+      <option value="**00**">356 (IN Rupees)</option>
+      <option value="**01**">840 (U.S.dollars)</option>      
+     </select> 
+  </div>
+  
+  <div class="form-group" *ngIf="model.de051 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="Currency Code" minlength="3" maxlength="3" [(ngModel)]="model.inputde051" name="inputde051">
+  
+  </div>
+
+</div>
+
+<!-- DE52 -->
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE052 - Personal Identification Number (PIN) Data :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de0052" selected  class="form-control" [(ngModel)]="model.de052"  #de052="ngModel" required>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="model.de052 == '**MANUAL**'">
+    <input class="form-control" type="text" (keypress)="lettersOnly($event)" placeholder="PIN Data" [(ngModel)]="model.inputde052" name="inputde052">
+  
+  </div>
+
+</div>
+
+<!-- DE053 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE053 - Security-Related Control Information :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de0053" selected  class="form-control" [(ngModel)]="model.de053"  #de053="ngModel" required>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="model.de053 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="Security-Related Control Information" [(ngModel)]="model.inputde053" name="inputde053">
+  
+  </div>
+
+</div>
+
+<!-- DE055 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE055 - Integrated Circuit Card (ICC)-Related Data :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de055" selected  class="form-control" [(ngModel)]="model.de055"  #de055="ngModel" required>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="model.de055 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="EMV Payload" [(ngModel)]="model.inputde055" name="inputde055">
+  
+  </div>
+
+</div>
+
+<!-- DE059 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE059 - National Point-of-Service Geographic Data :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de0059" selected  class="form-control" [(ngModel)]="model.de059"  #de059="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="model.de059 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="National POS Geographic Data" [(ngModel)]="model.inputde059" name="inputde059">
+  
+  </div>
+
+</div>
+
+<!-- DE60 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE060 - Additional POS Information :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de060" selected  class="form-control" [(ngModel)]="model.de060"  #de060="ngModel" required>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="model.de060 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="Additional POS Information" [(ngModel)]="model.inputde060" name="inputde060">
+  
+  </div>
+
+</div>
+
+<!-- DE61 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE061 - Other Amounts :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de061" selected  class="form-control" [(ngModel)]="model.de061"  #de061="ngModel" required>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="model.de061 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="Other Amounts" (keypress)="lettersOnly($event)" maxlength="24" [(ngModel)]="model.inputde061" name="inputde061">
+  
+  </div>
+
+</div>
+
+<!-- DE062 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE062 - Custom Payment Service Fields :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de062" selected  class="form-control" [(ngModel)]="model.de062"  #de062="ngModel" required>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="model.de062 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="Custom Payment Service" [(ngModel)]="model.inputde062" name="inputde062">
+  
+  </div>
+
+</div>
+
+<!-- DE063 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE063 - Field 63 Bitmap :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de063" selected  class="form-control" [(ngModel)]="model.de063"  #de063="ngModel" required>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="model.de063 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="Field 63 Bitmap" [(ngModel)]="model.inputde063" name="inputde063">
+  
+  </div>
+
+</div>
+
+<!-- DE066 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE066 - Settlement Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de066" selected  class="form-control" [(ngModel)]="model.de066"  #de066="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="model.de066 == '**MANUAL**'">
+    <input class="form-control" type="text" (keypress)="lettersOnly($event)" maxlength="1" placeholder="Settlement Code" [(ngModel)]="model.inputde066" name="inputde066">
+  
+  </div>
+
+</div>
+
+<!-- DE068 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE068 - Receiving Institution Country Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de068" selected  class="form-control" [(ngModel)]="model.de068"  #de068="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+
+  <div class="form-group" *ngIf="model.de068 == '**MANUAL**'">
+    <input class="form-control" type="text" (keypress)="lettersOnly($event)" maxlength="4" placeholder="Receiving Institution Country Code" [(ngModel)]="model.inputde068" name="inputde068">
+  
+  </div>
+
+</div>
+
+<!-- DE069 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE069 - Settlement Institution Country Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de069" selected  class="form-control" [(ngModel)]="model.de069"  #de069="ngModel" required>
+      <option value="**STTLE CNCODE**">Select Code</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group " *ngIf="model.de069 == '**STTLE CNCODE**'">
+    <select name="de069" selected  class="form-control" [(ngModel)]="model.select1de069"  #de069="ngModel" required>
+      <option value="**00**">356 (IN Rupees)</option>
+      <option value="**01**">840 (U.S.dollars)</option>      
+     </select> 
+  </div>
+  
+  <div class="form-group" *ngIf="model.de069 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="Settlement Institution Country Code" (keypress)="lettersOnly($event)" minlength="4" maxlength="4" [(ngModel)]="model.inputde069" name="inputde069">
+  
+  </div>
+
+</div>
+
+
+<!-- DE70 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE070 - Network Management Information Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de070" selected  class="form-control" [(ngModel)]="model.de070"  #de070="ngModel" required>
+      <option value="**NM CODE**">Select Code</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  <div class="form-group " *ngIf="model.de070 == '**NM CODE**'">
+    <select name="de070" selected  class="form-control" [(ngModel)]="model.select1de070"  #de070="ngModel" required>
+      <option value="**00**">071</option>
+      <option value="**01**">078</option>      
+      <option value="**02**">082</option>      
+      <option value="**03**">301</option>      
+      <option value="**04**">161</option>      
+     </select> 
+  </div>
+  
+  <div class="form-group" *ngIf="model.de070 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="Network Management Information Code" (keypress)="lettersOnly($event)" minlength="4" maxlength="4" [(ngModel)]="model.inputde070" name="inputde070">
+  
+  </div>
+
+</div>
+
+<!-- DE073 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE073 - Date, Action :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de073" selected  class="form-control" [(ngModel)]="model.de073"  #de073="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de073 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="yymmdd" (keypress)="lettersOnly($event)" minlength="6" maxlength="6" [(ngModel)]="model.inputde073" name="inputde073">
+  
+  </div>
+
+</div>
+
+<!-- DE074 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE074 - Credits, Number :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de074" selected  class="form-control" [(ngModel)]="model.de074"  #de074="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de074 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="No of credit Transactions" (keypress)="lettersOnly($event)" minlength="10" maxlength="10" [(ngModel)]="model.inputde074" name="inputde074">
+  
+  </div>
+
+</div>
+
+<!-- DE075 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE075 - Credits, Reversal Number :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de075" selected  class="form-control" [(ngModel)]="model.de075"  #de075="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de075 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="No of reversal credit transactions" (keypress)="lettersOnly($event)" minlength="10" maxlength="10" [(ngModel)]="model.inputde075" name="inputde075">
+  
+  </div>
+
+</div>
+
+<!-- DE076 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE076 - Debits, Number :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de076" selected  class="form-control" [(ngModel)]="model.de076"  #de076="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de076 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="No of debit transactions" (keypress)="lettersOnly($event)" minlength="10" maxlength="10" [(ngModel)]="model.inputde076" name="inputde076">
+  
+  </div>
+
+</div>
+
+<!-- DE077 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE077 - Debits, Reversal Number :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de077" selected  class="form-control" [(ngModel)]="model.de077"  #de077="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de077 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="No of reversal debit transactions" (keypress)="lettersOnly($event)" minlength="10" maxlength="10" [(ngModel)]="model.inputde077" name="inputde077">
+  
+  </div>
+
+</div>
+
+<!-- DE086 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE086 - Credits, Amount :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de086" selected  class="form-control" [(ngModel)]="model.de086"  #de086="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de086 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="No of all credit transactions" (keypress)="lettersOnly($event)" minlength="16" maxlength="16" [(ngModel)]="model.inputde086" name="inputde086">
+  
+  </div>
+
+</div>
+
+<!-- DE087 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE087 - Credits, Reversal Amount :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de087" selected  class="form-control" [(ngModel)]="model.de087"  #de087="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de087 == '**MANUAL**'">
+    <input class="form-control" type="text" (keypress)="lettersOnly($event)" minlength="16" maxlength="16" [(ngModel)]="model.inputde087" name="inputde087">
+  
+  </div>
+
+</div>
+
+<!-- DE088 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE088 - Debits, Amount :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de088" selected  class="form-control" [(ngModel)]="model.de088"  #de088="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de088 == '**MANUAL**'">
+    <input class="form-control" type="text" (keypress)="lettersOnly($event)" minlength="16" maxlength="16" [(ngModel)]="model.inputde088" name="inputde088">
+  
+  </div>
+
+</div>
+
+<!-- DE089 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE089 - Debits, Reversal Amount :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de089" selected  class="form-control" [(ngModel)]="model.de089"  #de089="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de089 == '**MANUAL**'">
+    <input class="form-control" type="text" (keypress)="lettersOnly($event)" minlength="16" maxlength="16" [(ngModel)]="model.inputde089" name="inputde089">
+  
+  </div>
+
+</div>
+
+<!-- DE90 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE090 - Original Data Elements :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de090" selected  class="form-control" [(ngModel)]="model.de090"  #de090="ngModel" required>
+      <option value="**SYSTEM**">SYSTEM</option>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de090 == '**MANUAL**'">
+    <input class="form-control" type="text" [(ngModel)]="model.inputde090" name="inputde090">
+  
+  </div>
+
+</div>
+
+<!-- DE091 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE091 - File Update Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de091" selected  class="form-control" [(ngModel)]="model.de091"  #de091="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de091 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="File Update Code" maxlength="1" [(ngModel)]="model.inputde091" name="inputde091">
+  
+  </div>
+
+</div>
+
+<!-- DE092 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE092 - File Security Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de092" selected  class="form-control" [(ngModel)]="model.de092"  #de091="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de092 == '**MANUAL**'">
+    <input class="form-control" type="text" placeholder="File Security Code" maxlength="2" [(ngModel)]="model.inputde092" name="inputde092">
+  
+  </div>
+
+</div>
+
+<!-- DE095 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE095 - Replacement Amounts :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de095" selected  class="form-control" [(ngModel)]="model.de095"  #de095="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de095 == '**MANUAL**'">
+    <input class="form-control" type="text" (keypress)="lettersOnly($event)"  placeholder="Replacement Amounts" maxlength="42" [(ngModel)]="model.inputde095" name="inputde095">
+  
+  </div>
+
+</div>
+
+<!-- DE096 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE096 - Message Security Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de096" selected  class="form-control" [(ngModel)]="model.de096"  #de096="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de096 == '**MANUAL**'">
+    <input class="form-control" type="text" (keypress)="lettersOnly($event)"  placeholder="Message Security Code" maxlength="64" [(ngModel)]="model.inputde096" name="inputde096">
+  
+  </div>
+
+</div>
+
+<!-- DE097 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE097 - Amount, Net Settlement :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de097" selected  class="form-control" [(ngModel)]="model.de097"  #de097="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de097 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Amount, Net Settlement" maxlength="17" [(ngModel)]="model.inputde097" name="inputde097">
+  
+  </div>
+
+</div>
+
+<!-- DE099 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE099 - Settlement Institution Identification Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de099" selected  class="form-control" [(ngModel)]="model.de099"  #de099="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de099 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Settlement Institution Identification Code" maxlength="11" [(ngModel)]="model.inputde099" name="inputde099">
+  
+  </div>
+
+</div>
+
+<!-- DE100 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE100 - Receiving Institution Identification Code :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de100" selected  class="form-control" [(ngModel)]="model.de100"  #de100="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de100 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Receiving Institution Identification Code" maxlength="11" [(ngModel)]="model.inputde100" name="inputde100">
+  
+  </div>
+
+</div>
+
+<!-- DE101 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE101 - File Name :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de101" selected  class="form-control" [(ngModel)]="model.de101"  #de101="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de101 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="File Name" maxlength="17" [(ngModel)]="model.inputde101" name="inputde101">
+  
+  </div>
+
+</div>
+
+<!-- DE102 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE102 - Account Identification 1 :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de102" selected  class="form-control" [(ngModel)]="model.de102"  #de102="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de102 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Account Identification 1" maxlength="28" [(ngModel)]="model.inputde102" name="inputde102">
+  
+  </div>
+
+</div>
+
+<!-- DE103 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE103 - Account Identification 2 :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de103" selected  class="form-control" [(ngModel)]="model.de103"  #de103="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de103 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Account Identification 1" maxlength="28" [(ngModel)]="model.inputde103" name="inputde103">
+  
+  </div>
+
+</div>
+
+<!-- DE105 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE105 - Double-Length DES Key :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de105" selected  class="form-control" [(ngModel)]="model.de105"  #de105="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de105 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Triple DES" maxlength="128" [(ngModel)]="model.inputde105" name="inputde105">
+  
+  </div>
+
+</div>
+
+<!-- DE110 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE110 - Encryption Data :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de110" selected  class="form-control" [(ngModel)]="model.de110"  #de110="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de110 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Encryption Data" [(ngModel)]="model.inputde110" name="inputde110">
+  
+  </div>
+
+</div>
+
+<!-- DE115 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE115 - Additional Trace Data :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de115" selected  class="form-control" [(ngModel)]="model.de115"  #de115="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de115 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Additional Trace Data" [(ngModel)]="model.inputde115" name="inputde115">
+  
+  </div>
+
+</div>
+
+<!-- DE116 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE116 - Card Issuer Reference Data :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de116" selected  class="form-control" [(ngModel)]="model.de116"  #de116="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de116 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Card Issuer Reference Data" [(ngModel)]="model.inputde116" name="inputde116">
+  
+  </div>
+
+</div>
+
+<!-- DE117 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE117 - National Use :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de117" selected  class="form-control" [(ngModel)]="model.de117"  #de117="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de117 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="National Use" [(ngModel)]="model.inputde117" name="inputde117">
+  
+  </div>
+
+</div>
+
+<!-- DE118 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE118 - Intra-Country Data :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de118" selected  class="form-control" [(ngModel)]="model.de118"  #de118="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de118 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Intra-Country Data" [(ngModel)]="model.inputde118" name="inputde118">
+  
+  </div>
+
+</div>
+
+<!-- DE119 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE119 - Settlement Service Data :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de119" selected  class="form-control" [(ngModel)]="model.de119"  #de119="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de119 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Settlement Service Data" [(ngModel)]="model.inputde119" name="inputde119">
+  
+  </div>
+
+</div>
+
+<!-- DE120 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE120 - Settlement Service Data :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de120" selected  class="form-control" [(ngModel)]="model.de120"  #de120="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de120 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Auxiliary Transaction Data" [(ngModel)]="model.inputde120" name="inputde120">
+  
+  </div>
+
+</div>
+
+<!-- DE123 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE123 - Verification Data :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de123" selected  class="form-control" [(ngModel)]="model.de123"  #de123="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de123 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Verification Data" [(ngModel)]="model.inputde123" name="inputde123">
+  
+  </div>
+
+</div>
+
+<!-- DE125 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE125 - Supporting Information :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de125" selected  class="form-control" [(ngModel)]="model.de125"  #de125="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de125 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Supporting Information" [(ngModel)]="model.inputde125" name="inputde125">
+  
+  </div>
+
+</div>
+
+<!-- DE126 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE126 - Visa Private-Use Fields :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de126" selected  class="form-control" [(ngModel)]="model.de126"  #de126="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de126 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="Visa Private-Use" [(ngModel)]="model.inputde126" name="inputde126">
+  
+  </div>
+
+</div>
+
+<!-- DE127 -->
+
+<div class="form-row">
+  <div class="form-group col-2">
+      <label>DE127 - File Record :</label><span class="required">*</span></div>
+
+  <div class="form-group col-3">
+    <select name="de127" selected  class="form-control" [(ngModel)]="model.de127"  #de127="ngModel" required>
+      <option value="**MANUAL**">MANUAL</option>
+       <option value="**NOT REQUIRED**">NOT REQUIRED</option>
+     </select>
+      <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+        <div *ngIf="sourceID.errors.required">Source Id is required</div>
+    </div>
+  </div>
+  
+  <div class="form-group" *ngIf="model.de127 == '**MANUAL**'">
+    <input class="form-control" type="text"   placeholder="File Record" [(ngModel)]="model.inputde127" name="inputde127">
+  
+  </div>
+
+</div>
+
+
+
+
+
+
+
+ <br>
+        <div class="text-center">
+            <button class="btn btn-primary mr-1">Save</button>
+            <button class="btn btn-secondary" type="reset">Cancel</button>
+        </div>
+                
+      </form>
+  </div>
+ 
+</div>

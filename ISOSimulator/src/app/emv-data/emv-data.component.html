@@ -1,0 +1,406 @@
+<style>
+    .card-header{
+      padding: 0.75rem 32.25rem;
+      margin-bottom: 0;
+      background-color: rgba(0,0,0,.03);
+      border-bottom: 1px solid rgba(0,0,0,.125);
+      margin-left: 2px;
+      width: 100%;
+    }
+  </style>
+  
+  <div class="card-m-3 comp3">
+    <h5 class="card-header">{{title}}</h5>
+    <div class="card-body">
+        <!--<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" [mustMatch]="['password', 'confirmPassword']" novalidate>-->
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-row">
+                <legend>EMV Keys :</legend><br>
+                <div class="form-group col-2">
+                    <label>EMV Key 1 :</label> </div>
+                <div class="form-group col-10">
+                    <input type="text" required name="emvdataKey1" placeholder="Enter Key 1" class="form-control" [(ngModel)]="model.emvdataKey1" #emvdataKey1="ngModel" [ngClass]="{ 'is-invalid': f.submitted && emvdataKey1.invalid }" >
+                    <div *ngIf="f.submitted && emvdataKey1.invalid" class="invalid-feedback">
+                        <div *ngIf="emvdataKey1.errors.required">EMV Key 1 is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-2">
+                    <label>EMV Key 2 :</label> </div>
+                <div class="form-group col-10">
+                    <input type="text" name="emvdataKey2" placeholder="Enter Key 2" class="form-control" [(ngModel)]="model.emvdataKey2" #emvdataKey2="ngModel" [ngClass]="{ 'is-invalid': f.submitted && emvdataKey2.invalid }" >
+                    <div *ngIf="f.submitted && emvdataKey2.invalid" class="invalid-feedback">
+                        <div *ngIf="emvdataKey2.errors.required">EMV Key 2 is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-2">
+                    <label>EMV Key 3 :</label> </div>
+                <div class="form-group col-10">
+                    <input type="text" name="emvdataKey3" placeholder="Enter Key 3" class="form-control" [(ngModel)]="model.emvdataKey3" #emvdataKey3="ngModel" [ngClass]="{ 'is-invalid': f.submitted && emvdataKey3.invalid }" >
+                    <div *ngIf="f.submitted && emvdataKey3.invalid" class="invalid-feedback">
+                        <div *ngIf="emvdataKey3.errors.required">EMV Key 3 is required</div>
+                    </div>
+                </div>
+            </div>
+
+             
+
+<div class="form-row">
+
+    <div class="form-group col-2">
+
+        <label>EMV Data Key Format :</label> </div>
+
+    <div class="form-group col-10">
+
+        <select name="emvdataKeyFormat" placeholder="Select" class="form-control" [(ngModel)]="model.emvdataKeyFormat" #emvdataKeyFormat="ngModel" required>
+
+      <option value="EMV2000">EMV2000</option>
+      <option value="VSDC">VSDC</option>
+
+     
+
+  </select>
+
+        <div *ngIf="f.submitted && emvdataKeyFormat.invalid" class="invalid-feedback">
+
+            <div *ngIf="emvdataKeyFormat.errors.required">EMV Data Key Format is required</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+            <br>
+            <div class="form-row">
+                <legend>EMV Data :</legend><br>
+                <div class="form-group col-5">
+
+                    <label>Tag 5A - Application Primary Account Number (PAN) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag5A" placeholder="Tag 5A" class="form-control" [(ngModel)]="model.tag5A" #tag5A="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag5A.invalid }" >
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 50 - Application Label :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag50" placeholder="Tag 50" class="form-control" [(ngModel)]="model.tag50" #tag50="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag50.invalid }" >
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 54 - (Unknown) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag54" placeholder="Tag 54" class="form-control" [(ngModel)]="model.tag54" #tag54="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag54.invalid }" >
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 57 - Track 2 Equivalent Data :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag57" placeholder="Tag 57" class="form-control" [(ngModel)]="model.tag57" #tag57="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag57.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 5F2A - Transaction Currency Code :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag5F2A" placeholder="Tag 5F2A" class="form-control" [(ngModel)]="model.tag5F2A" #tag5F2A="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag5F2A.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 5F24 - Application Expiration Date :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag5F24" placeholder="Tag 5F24" class="form-control" [(ngModel)]="model.tag5F24" #tag5F24="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag5F24.invalid }" >
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 5F34 - Application PAN Sequence Number (PSN) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag5F34" placeholder="Tag 5F34" class="form-control" [(ngModel)]="model.tag5F34" #tag5F34="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag5F34.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 5F36 - Transaction Currency Exponent :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag5F36" placeholder="Tag 5F36" class="form-control" [(ngModel)]="model.tag5F36" #tag5F36="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag5F36.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 71 - Issuer Script Template 1 :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag71" placeholder="Tag 71" class="form-control" [(ngModel)]="model.tag71" #tag71="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag71.invalid }" >
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 72 - Issuer Script Template 2 :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag72" placeholder="Tag 72" class="form-control" [(ngModel)]="model.tag72" #tag72="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag72.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 81 - Amount, Authorised (Binary) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag81" placeholder="Tag 81" class="form-control" [(ngModel)]="model.tag81" #tag81="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag81.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 82 - Application Interchange Profile (AIP) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag82" placeholder="Tag 82" class="form-control" [(ngModel)]="model.tag82" #tag82="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag82.invalid }" >
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 84 - Dedicated File (DF) Name :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag84" placeholder="Tag 84" class="form-control" [(ngModel)]="model.tag84" #tag84="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag84.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 8A - Authorisation Response Code (ARC) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag8A" placeholder="Tag 8A" class="form-control" [(ngModel)]="model.tag8A" #tag8A="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag8A.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 91 - Issuer Authentication Data :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag91" placeholder="Tag 91" class="form-control" [(ngModel)]="model.tag91" #tag91="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag91.invalid }" >
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 94 - Application File Locator (AFL) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag94" placeholder="Tag 94" class="form-control" [(ngModel)]="model.tag94" #tag94="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag94.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 95 - Terminal Verification Results (TVR) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag95" placeholder="Tag 95" class="form-control" [(ngModel)]="model.tag95" #tag95="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag95.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 96 - (Unknown) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag96" placeholder="Tag 96" class="form-control" [(ngModel)]="model.tag96" #tag96="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag96.invalid }" >
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 98 - Transaction Certificate (TC) Hash Value :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag98" placeholder="Tag 98" class="form-control" [(ngModel)]="model.tag98" #tag98="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag98.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9A - Transaction Date :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9A" placeholder="Tag 9A" class="form-control" [(ngModel)]="model.tag9A" #tag9A="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9A.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9B - Transaction Status Information (TSI) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9B" placeholder="Tag 9B" class="form-control" [(ngModel)]="model.tag9B" #tag9B="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9B.invalid }" >
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9C - Transaction Type :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9C" placeholder="Tag 9C" class="form-control" [(ngModel)]="model.tag9C" #tag9C="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9C.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F02 - Transaction Type :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F02" placeholder="Tag 9F02" class="form-control" [(ngModel)]="model.tag9F02" #tag9F02="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F02.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F03 - Amount, Other (Numeric) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F03" placeholder="Tag 9F03" class="form-control" [(ngModel)]="model.tag9F03" #tag9F03="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F03.invalid }" >
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F06 - Application Identifier (AID), Terminal :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F06" placeholder="Tag 9F06" class="form-control" [(ngModel)]="model.tag9F06" #tag9F06="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F06.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F10 - Issuer Application Data (IAD) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F10" placeholder="Tag 9F10" class="form-control" [(ngModel)]="model.tag9F10" #tag9F10="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F10.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F1A - Terminal Country Code :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F1A" placeholder="Tag 9F1A" class="form-control" [(ngModel)]="model.tag9F1A" #tag9F1A="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F1A.invalid }" >
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F26 - Application Cryptogram (AC) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F26" placeholder="Tag 9F26" class="form-control" [(ngModel)]="model.tag9F26" #tag9F26="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F26.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F27 - Cryptogram Information Data (CID) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F27" placeholder="Tag 9F27" class="form-control" [(ngModel)]="model.tag9F27" #tag9F27="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F27.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F33 - Terminal Capabilities :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F33" placeholder="Tag 9F33" class="form-control" [(ngModel)]="model.tag9F33" #tag9F33="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F33.invalid }" >
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F34 - Cardholder Verification Method (CVM) Results :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F34" placeholder="Tag 9F34" class="form-control" [(ngModel)]="model.tag9F34" #tag9F34="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F34.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F35 - Terminal Type :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F35" placeholder="Tag 9F35" class="form-control" [(ngModel)]="model.tag9F35" #tag9F35="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F35.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F36 - Application Transaction Counter (ATC) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F36" placeholder="Tag 9F36" class="form-control" [(ngModel)]="model.tag9F36" #tag9F36="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F36.invalid }" >
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F37 - Unpredictable Number (UN) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F37" placeholder="Tag 9F37" class="form-control" [(ngModel)]="model.tag9F37" #tag9F37="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F37.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F5B - Issuer Script Results :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F5B" placeholder="Tag 9F5B" class="form-control" [(ngModel)]="model.tag9F5B" #tag9F5B="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F5B.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F6E - Form Factor Indicator (FFI) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F6E" placeholder="Tag 9F6E" class="form-control" [(ngModel)]="model.tag9F6E" #tag9F6E="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F6E.invalid }" >
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag 9F7C - Customer Exclusive Data (CED) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9F7C" placeholder="Tag 9F7C" class="form-control" [(ngModel)]="model.tag9F7C" #tag9F7C="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9F7C.invalid }" >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Tag C0 - (Unknown) :</label></div>
+                <div class="form-group col-7">
+                    <input type="text" name="tag9FC0" placeholder="Tag 9FC0" class="form-control" [(ngModel)]="model.tag9FC0" #tag9FC0="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tag9FC0.invalid }" >
+                </div>
+            </div>
+            <br>
+            <div class="text-center">
+                <button class="btn btn-primary mr-1" >{{button}}</button>
+                <a [routerLink]="['/Edit-Card',model.cardId,1]"><button class="btn btn-secondary">Cancel</button></a>
+            </div>
+        </form>
+    </div>
+</div>

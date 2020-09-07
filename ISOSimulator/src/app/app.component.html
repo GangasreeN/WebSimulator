@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <link rel="icon" type="image/png" href="assets/images/favicon.png"/>
+</head>
+<body>
+  
+  <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>-->
+          <!--<a class="navbar-brand" href="#">Portfolio</a>-->
+          <div class="header">
+            
+            <div class="imgcontainer">
+                <img src="/assets/images/logo.jpg" alt="FSS logo" class=" logo_standard" itemprop="image"> 
+
+                <ul class="nav navbar-nav navbar-right align-icon" *ngIf="menuFlag==0">
+                  
+                    
+                 <!--<li><a  id="user-text" routerLink="login" class="nav-link" routerLinkActive="active">
+                    Login
+                  </a></li>
+                  
+                  <li><a id="logout-icon" aria-hidden="true" routerLink="registration" class="nav-link" routerLinkActive="active">
+                    Registration
+                  </a></li>-->
+                  
+                </ul>   
+                <h1 Class="title-align" style="left: 600px;">WEB SIMULATOR</h1>
+                <!-- <ul class="nav navbar-nav navbar-right align-icon" *ngIf="menuFlag==1"> -->
+                <ul class="nav navbar-nav navbar-right align-icon" *ngIf="menuFlag==1">
+                    <li> <a id="Home" routerLink="/Home" ><mat-icon>home</mat-icon></a></li>
+                    <li><span><a href="#" id="user-profile" routerLink="/View-Profile"><b>Welcome <br> {{userDetails.userName}}</b></a></span>
+                    </li>
+
+                    <li><a href="#"  id="logout" (click)="logout()"><mat-icon>power_settings_new</mat-icon></a></li>
+                    <!--<li><a href="#" (click)="logout()"><span><i class="fa fa-power-off "  id="logout-icon"  aria-hidden="true"><b><i class="material-icons">logout</i></b></i></span></a></li>-->
+                    
+                  </ul>
+                 
+                  
+              </div>
+        </div>
+        </div>
+        
+      </div>
+    </nav>
+    
+   
+
+
+
+
+
+<!--<mat-sidenav #sidenav role="navigation">
+  <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
+</mat-sidenav>-->
+
+
+
+<!--<div *ngIf='menuFlag !=0'> 
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" style=" width: 178px;">-->
+  <!-- This is the tree node template for leaf nodes -->
+  <!-- <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>-->
+    <!-- use a disabled button to provide padding for tree leaf -->
+   <!--  <button mat-icon-button disabled></button>-->
+    <!--<a routerLink="/card-list"> {{node.name}}</a><br>-->
+    
+    
+ <!--  </mat-tree-node>-->
+  <!-- This is the tree node template for expandable nodes -->
+  <!--<mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+    <button mat-icon-button matTreeNodeToggle
+            [attr.aria-label]="'toggle ' + node.name">
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
+    {{node.name}}
+  </mat-tree-node>
+</mat-tree>
+</div>-->
+
+<div class="left-menu-bar" *ngIf='menuFlag !=0'>
+  <app-menu-bar></app-menu-bar>
+</div>
+<div class ="main" >
+
+
+
+<div class="container home">
+  <router-outlet></router-outlet>
+</div>
+</div>
+
+<footer class="container-fluid foot-text-center">
+  <p>&copy;Copyright 2020, All Rights Reserved</p>
+</footer>
+</body>
+</html>

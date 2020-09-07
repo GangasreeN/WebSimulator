@@ -1,0 +1,459 @@
+
+  <h5 class="card-header">{{title}}</h5>
+
+<div class="comp3"> 
+
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title style="font-weight:500;font-size: 18px;">
+        VISA
+      </mat-panel-title>
+      <!-- <mat-panel-description>
+        Currently  {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description> -->
+    </mat-expansion-panel-header>
+<style>
+  .card-header{
+    padding: 0.75rem 32.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    margin-left: 2px;
+    width: 100%;
+  }
+</style>
+
+
+<div class="card-m-3">
+  <!-- <h5 class="card-header">{{title1}}</h5> -->
+  <div class="card-body">
+      <!--<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" [mustMatch]="['password', 'confirmPassword']" novalidate>-->
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <div class="form-row">
+              <legend>Terminal Data Settings :</legend><br>
+              
+          </div>
+          <br>
+
+          <div class="form-row">
+            <div class="form-group col-5">
+                <label>Sorce ID :</label><span class="required">*</span></div>
+            <div class="form-group col-7">
+                <input type="text" name="sourceID" placeholder="Source Id" class="form-control" [(ngModel)]="model.sourceID" #sourceID="ngModel" [ngClass]="{ 'is-invalid': f.submitted && sourceID.invalid }" required>
+                <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+                  <div *ngIf="sourceID.errors.required">Source Id is required</div>
+              </div>
+            </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-5">
+              <label>Destination ID :</label><span class="required">*</span></div>
+          <div class="form-group col-7">
+              <input type="text" name="destinationID" placeholder="Destination Id" class="form-control" [(ngModel)]="model.destinationID" #destinationID="ngModel" [ngClass]="{ 'is-invalid': f.submitted && destinationID.invalid }" required>
+              <div *ngIf="f.submitted && destinationID.invalid" class="invalid-feedback">
+                <div *ngIf="destinationID.errors.required">Destination Id is required</div>
+            </div>
+          </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-5">
+            <label>Message Format :</label><span class="required">*</span></div>
+        <div class="form-group col-7">
+          
+          <select name="messageFormat" selected  class="form-control" [(ngModel)]="model.messageFormat" #messageFormat="ngModel" required>
+           <option value="ASCII">ASCII</option>
+            <option value="BINARY">BINARY</option>
+            <option value="EBCIDIC">EBCIDIC</option>
+          </select>
+          <div *ngIf="f.submitted && messageFormat.invalid" class="invalid-feedback">
+              <div *ngIf="messageFormat.errors.required">Message Format is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-5">
+            <label>Packed Information :</label><span class="required">*</span></div>
+        <div class="form-group col-7">
+          <select name="packedInformation" selected  class="form-control" [(ngModel)]="model.packedInformation" #packedInformation="ngModel" required>
+                  <option value="Packed">Packed</option>
+                  <option value="Unpacked">Unpacked</option>
+                </select>
+            <div *ngIf="f.submitted && visade63_1.invalid" class="invalid-feedback">
+              <div *ngIf="visade63_1.errors.required">Network Identifier is required</div>
+          </div>
+        </div>
+    </div>
+
+      
+          
+    <div class="form-row">
+      <div class="form-group col-5">
+          <label>DE18 - Merchant Type :</label><span class="required">*</span></div>
+      <div class="form-group col-7">
+          <input type="text" name="visaDE18" placeholder=" DE18" class="form-control" [(ngModel)]="model.visaDE18" #visaDE18="ngModel" [ngClass]="{ 'is-invalid': f.submitted && visaDE18.invalid }" required>
+          <div *ngIf="f.submitted && visaDE18.invalid" class="invalid-feedback">
+            <div *ngIf="visaDE18.errors.required">DE18 is required</div>
+        </div>
+      </div>
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group col-5">
+        <label>DE19 - Country Code :</label><span class="required">*</span></div>
+    <div class="form-group col-7">
+        <input type="text" name="visaDE19" placeholder="DE19" class="form-control" [(ngModel)]="model.visaDE19" #visaDE19="ngModel" [ngClass]="{ 'is-invalid': f.submitted && visaDE19.invalid }" required>
+        <div *ngIf="f.submitted && visaDE19.invalid" class="invalid-feedback">
+          <div *ngIf="visaDE19.errors.required"> DE19 is required</div>
+      </div>
+    </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-5">
+      <label>DE32 - Acquiring Institutional Identification Code  :</label><span class="required">*</span></div>
+  <div class="form-group col-7">
+      <input type="text" name="visaDE32" placeholder="DE32" class="form-control" [(ngModel)]="model.visaDE32" #visaDE32="ngModel" [ngClass]="{ 'is-invalid': f.submitted && visaDE32.invalid }" required>
+      <div *ngIf="f.submitted && visaDE32.invalid" class="invalid-feedback">
+        <div *ngIf="visaDE32.errors.required">DE32 is required</div>
+    </div>
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-5">
+      <label>DE33 - Forwarding Institutional Identification Code  :</label><span class="required">*</span></div>
+  <div class="form-group col-7">
+      <input type="text" name="visaDE33" placeholder="DE33" class="form-control" [(ngModel)]="model.visaDE33" #visaDE33="ngModel" [ngClass]="{ 'is-invalid': f.submitted && visaDE33.invalid }" required>
+      <div *ngIf="f.submitted && visaDE33.invalid" class="invalid-feedback">
+        <div *ngIf="visaDE33.errors.required">DE33 is required</div>
+    </div>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-5">
+      <label>DE41 - Acceptor Terminal Identification :</label><span class="required">*</span></div>
+  <div class="form-group col-7">
+      <input type="text" name="visaDE41" placeholder="DE41" class="form-control" [(ngModel)]="model.visaDE41" #visaDE41="ngModel" [ngClass]="{ 'is-invalid': f.submitted && visaDE41.invalid }" required>
+      <div *ngIf="f.submitted && visaDE41.invalid" class="invalid-feedback">
+        <div *ngIf="visaDE41.errors.required">DE41 is required</div>
+    </div>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-5">
+      <label>DE42 - Acceptor Identification Code :</label><span class="required">*</span></div>
+  <div class="form-group col-7">
+      <input type="text" name="visaDE42" placeholder="DE42" class="form-control" [(ngModel)]="model.visaDE42" #visaDE42="ngModel" [ngClass]="{ 'is-invalid': f.submitted && visaDE42.invalid }" required>
+      <div *ngIf="f.submitted && visaDE42.invalid" class="invalid-feedback">
+        <div *ngIf="visaDE42.errors.required">DE42 is required</div>
+    </div>
+  </div>
+</div>
+          
+          
+
+<div class="form-row">
+  <div class="form-group col-5">
+      <label>DE43.1 - Card Acceptor Street Address :</label><span class="required">*</span></div>
+  <div class="form-group col-7">
+      <input type="text" name="visaDE43_1" placeholder="DE43.1" class="form-control" [(ngModel)]="model.visaDE43_1" #visaDE43_1="ngModel" [ngClass]="{ 'is-invalid': f.submitted && visaDE43_1.invalid }" required>
+      <div *ngIf="f.submitted && visaDE43_1.invalid" class="invalid-feedback">
+        <div *ngIf="visaDE43_1.errors.required">DE43.1 is required</div>
+    </div>
+  </div>
+</div>
+
+<br>
+<div class="form-row">
+  <div class="form-group col-5">
+      <label>DE43.2 - Card Acceptor City :</label><span class="required">*</span></div>
+  <div class="form-group col-7">
+      <input type="text" name="visaDE43_2" placeholder="DE43.2" class="form-control" [(ngModel)]="model.visaDE43_2" #visaDE43_2="ngModel" [ngClass]="{ 'is-invalid': f.submitted && visaDE43_2.invalid }" required>
+      <div *ngIf="f.submitted && visaDE43_2.invalid" class="invalid-feedback">
+        <div *ngIf="visaDE43_2.errors.required">DE43.2 is required</div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="form-row">
+  <div class="form-group col-5">
+      <label>DE43.3 - Card Acceptor State :</label><span class="required">*</span></div>
+  <div class="form-group col-7">
+      <input type="text" name="visaDE43_3" placeholder="DE43.3" class="form-control" [(ngModel)]="model.visaDE43_3" #visaDE43_3="ngModel" [ngClass]="{ 'is-invalid': f.submitted && visaDE43_3.invalid }" required>
+      <div *ngIf="f.submitted && visaDE43_3.invalid" class="invalid-feedback">
+        <div *ngIf="visaDE43_3.errors.required">DE43.3 is required</div>
+    </div>
+  </div>
+</div>
+<!-- <br>
+<div class="form-row">
+  <div class="form-group col-5">
+      <label>DE43.4 - Card Acceptor Country :</label><span class="required">*</span></div>
+  <div class="form-group col-7">
+      <input type="text" name="visaDE43_4" placeholder="DE43.4" class="form-control" [(ngModel)]="model.visaDE43_4" #visaDE43_4="ngModel" [ngClass]="{ 'is-invalid': f.submitted && visaDE43_4.invalid }" required>
+      <div *ngIf="f.submitted && visaDE43_4.invalid" class="invalid-feedback">
+        <div *ngIf="visaDE43_4.errors.required">DE43.4 is required</div>
+    </div>
+  </div>
+</div> -->
+
+<br>
+  <div class="form-row">
+    <div class="form-group col-5">
+        <label>DE63.1 - Network Identification Code :</label><span class="required">*</span></div>
+    <div class="form-group col-7">
+      <select name="visade63_1" class="form-control" [(ngModel)]="master.visade63_1" #visade63_1="ngModel" [ngClass]="{ 'is-invalid': f.submitted && visade63_1.invalid }" required>
+        <option value="000">000  Priority Routing</option>
+         <option value="002">002  Visa Debit</option>
+         <option value="003">003  Interlink</option>
+         <option value="004">004  Plus</option>
+       </select>
+
+      <div *ngIf="f.submitted && visade63_1.invalid" class="invalid-feedback">
+          <div *ngIf="visade63_1.errors.required">DE63.1 is required</div>
+      </div>
+    </div>
+ </div>
+
+<br>
+<div class="text-center">
+    <button class="btn btn-primary mr-1">Update</button>
+    <button class="btn btn-secondary" type="reset">Cancel</button>
+</div>
+      </form>
+  </div>
+ 
+</div>
+
+</mat-expansion-panel>
+<!-- </mat-accordion>
+<mat-accordion> -->
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title style="font-weight:500;font-size: 18px;">
+        Master Card
+      </mat-panel-title>
+      <!-- <mat-panel-description>
+        Currently {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description> -->
+    </mat-expansion-panel-header>
+<style>
+  .card-header{
+    padding: 0.75rem 32.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    margin-left: 2px;
+    width: 100%;
+  }
+</style>
+
+
+    
+<div class="card-m-3">
+  <!-- <h5 class="card-header">{{title2}}</h5> -->
+  <div class="card-body">
+      <!--<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" [mustMatch]="['password', 'confirmPassword']" novalidate>-->
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <div class="form-row">
+              <legend>Terminal Data Settings :</legend><br>
+              
+          </div>
+          <br>
+
+          <div class="form-row">
+            <div class="form-group col-5">
+                <label>Packed Information :</label><span class="required">*</span></div>
+            <div class="form-group col-7">
+              <select name="packedInformation" selected  class="form-control" [(ngModel)]="master.packedInformation" #packedInformation="ngModel" required>
+                <option value="Packed">Packed</option>
+                 <option value="Unpacked">Unpacked</option>
+               </select>
+                <div *ngIf="f.submitted && sourceID.invalid" class="invalid-feedback">
+                  <div *ngIf="sourceID.errors.required">Source Id is required</div>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-5">
+              <label>Message Format :</label><span class="required">*</span></div>
+          <div class="form-group col-7">
+            
+            <select name="messageFormat" selected  class="form-control" [(ngModel)]="master.messageFormat" #visade63_1="ngModel" required>
+              <option value="ASCII">ASCII</option>
+               <option value="BINARY">BINARY</option>
+               <option value="EBCIDIC">EBCIDIC</option>
+             </select>
+            <div *ngIf="f.submitted && messageFormat.invalid" class="invalid-feedback">
+                <div *ngIf="messageFormat.errors.required">Message Format is required</div>
+            </div>
+          </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-5">
+            <label>DE18 - Merchant Type :</label><span class="required">*</span></div>
+        <div class="form-group col-7">
+            <input type="text" name="masterDE18" placeholder=" DE18" class="form-control" [(ngModel)]="master.masterDE18" #masterDE18="ngModel" [ngClass]="{ 'is-invalid': f.submitted && masterDE18.invalid }" required>
+            <div *ngIf="f.submitted && masterDE18.invalid" class="invalid-feedback">
+              <div *ngIf="masterDE18.errors.required">DE18 is required</div>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-5">
+          <label>DE19 - Country Code :</label><span class="required">*</span></div>
+      <div class="form-group col-7">
+          <input type="text" name="masterDE19" placeholder="DE19" class="form-control" [(ngModel)]="master.masterDE19" #masterDE19="ngModel" [ngClass]="{ 'is-invalid': f.submitted && masterDE19.invalid }" required>
+          <div *ngIf="f.submitted && masterDE19.invalid" class="invalid-feedback">
+            <div *ngIf="masterDE19.errors.required"> DE19 is required</div>
+        </div>
+      </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-5">
+        <label>DE32 - Acquiring Institutional Identification Code  :</label><span class="required">*</span></div>
+    <div class="form-group col-7">
+        <input type="text" name="masterDE32" placeholder="DE32" class="form-control" [(ngModel)]="master.masterDE32" #masterDE32="ngModel" [ngClass]="{ 'is-invalid': f.submitted && masterDE32.invalid }" required>
+        <div *ngIf="f.submitted && masterDE32.invalid" class="invalid-feedback">
+          <div *ngIf="masterDE32.errors.required">DE32 is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-5">
+        <label>DE33 - Forwarding Institutional Identification Code  :</label><span class="required">*</span></div>
+    <div class="form-group col-7">
+        <input type="text" name="masterDE33" placeholder="DE32" class="form-control" [(ngModel)]="master.masterDE33" #masterDE33="ngModel" [ngClass]="{ 'is-invalid': f.submitted && masterDE33.invalid }" required>
+        <div *ngIf="f.submitted && masterDE33.invalid" class="invalid-feedback">
+          <div *ngIf="masterDE33.errors.required">DE33 is required</div>
+      </div>
+    </div>
+  </div>
+
+<div class="form-row">
+  <div class="form-group col-5">
+      <label>DE41 - Acceptor Terminal Identification :</label><span class="required">*</span></div>
+  <div class="form-group col-7">
+      <input type="text" name="masterDE41" placeholder="DE41" class="form-control" [(ngModel)]="master.masterDE41" #masterDE41="ngModel" [ngClass]="{ 'is-invalid': f.submitted && masterDE41.invalid }" required>
+      <div *ngIf="f.submitted && masterDE41.invalid" class="invalid-feedback">
+        <div *ngIf="masterDE41.errors.required">DE41 is required</div>
+    </div>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-5">
+      <label>DE42 - Acceptor Identification Code :</label><span class="required">*</span></div>
+  <div class="form-group col-7">
+      <input type="text" name="masterDE42" placeholder="DE42" class="form-control" [(ngModel)]="master.masterDE42" #masterDE42="ngModel" [ngClass]="{ 'is-invalid': f.submitted && masterDE42.invalid }" required>
+      <div *ngIf="f.submitted && masterDE42.invalid" class="invalid-feedback">
+        <div *ngIf="masterDE42.errors.required">DE42 is required</div>
+    </div>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-5">
+      <label>DE43.1 - Card Acceptor Street Address :</label><span class="required">*</span></div>
+  <div class="form-group col-7">
+      <input type="text" name="masterDE43_1" placeholder="DE43.1" class="form-control" [(ngModel)]="master.masterDE43_1" #masterDE43_1="ngModel" [ngClass]="{ 'is-invalid': f.submitted && masterDE43_1.invalid }" required>
+      <div *ngIf="f.submitted && masterDE43_1.invalid" class="invalid-feedback">
+        <div *ngIf="masterDE43_1.errors.required">DE43.1 is required</div>
+    </div>
+  </div>
+</div>
+
+<br>
+        <div class="form-row">
+          <div class="form-group col-5">
+              <label>DE43.2 - Card Acceptor City :</label><span class="required">*</span></div>
+          <div class="form-group col-7">
+              <input type="text" name="masterDE43_2" placeholder="DE43.2" class="form-control" [(ngModel)]="master.masterDE43_2" #masterDE43_2="ngModel" [ngClass]="{ 'is-invalid': f.submitted && masterDE43_2.invalid }" required>
+              <div *ngIf="f.submitted && masterDE43_2.invalid" class="invalid-feedback">
+                <div *ngIf="masterDE43_2.errors.required">DE43.2 is required</div>
+            </div>
+          </div>
+      </div>
+
+      <br>
+      <div class="form-row">
+        <div class="form-group col-5">
+            <label>DE43.3 - Card Acceptor State :</label><span class="required">*</span></div>
+        <div class="form-group col-7">
+            <input type="text" name="masterDE43_3" placeholder="DE43.3" class="form-control" [(ngModel)]="master.masterDE43_3" #masterDE43_3="ngModel" [ngClass]="{ 'is-invalid': f.submitted && masterDE43_3.invalid }" required>
+            <div *ngIf="f.submitted && masterDE43_3.invalid" class="invalid-feedback">
+              <div *ngIf="masterDE43_3.errors.required">DE43.3 is required</div>
+          </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="form-row">
+      <div class="form-group col-5">
+          <label>DE43.4 - Card Acceptor Country :</label><span class="required">*</span></div>
+      <div class="form-group col-7">
+          <input type="text" name="masterDE43_4" placeholder="DE43.4" class="form-control" [(ngModel)]="master.masterDE43_4" #masterDE43_4="ngModel" [ngClass]="{ 'is-invalid': f.submitted && masterDE43_4.invalid }" required>
+          <div *ngIf="f.submitted && masterDE43_4.invalid" class="invalid-feedback">
+            <div *ngIf="masterDE43_4.errors.required">DE43.4 is required</div>
+        </div>
+      </div>
+  </div>
+
+  <br>
+  <div class="form-row">
+    <div class="form-group col-5">
+        <label>DE63.1 - Network Identification Code :</label><span class="required">*</span></div>
+    <div class="form-group col-7">
+      <select name="masterDE63_1" selected class="form-control" [(ngModel)]="master.masterDE63_1" #masterDE63_1="ngModel" [ngClass]="{ 'is-invalid': f.submitted && masterDE63_1.invalid }" required>
+        <option value="MC">MC</option>
+         <option value="CI" >CI</option>
+         <option value="MS">MS</option>
+         <option value="MD">MD</option>
+       </select>
+
+
+
+
+      <div *ngIf="f.submitted && masterDE63_1.invalid" class="invalid-feedback">
+          <div *ngIf="masterDE63_1.errors.required">DE63.1 is required</div>
+      </div>
+    </div>
+ </div>
+  <br>
+  <div class="form-row">
+    <div class="form-group col-5">
+        <label>DE96 - Message Security Code :</label><span class="required">*</span></div>
+    <div class="form-group col-7">
+        <input type="text" name="masterDE96" placeholder="DE96" class="form-control" [(ngModel)]="master.masterDE96" #masterDE96="ngModel" [ngClass]="{ 'is-invalid': f.submitted && masterDE96.invalid }" required>
+        <div *ngIf="f.submitted && masterDE96.invalid" class="invalid-feedback">
+          <div *ngIf="masterDE96.errors.required">DE96 is required</div>
+      </div>
+    </div>
+ </div>
+
+ <br>
+        <div class="text-center">
+            <button class="btn btn-primary mr-1">Update</button>
+            <button class="btn btn-secondary" type="reset">Cancel</button>
+        </div>
+                
+      </form>
+  </div>
+ 
+</div>
+ <!-- <p>I'm visible because I am open</p> -->
+</mat-expansion-panel>
+</mat-accordion>
+</div>

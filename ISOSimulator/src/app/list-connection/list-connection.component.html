@@ -1,0 +1,91 @@
+<style>
+  .card-header{
+    padding: 0.75rem 32.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    margin-left: 2px;
+    width: 1260px;
+  }
+</style>
+<html>
+
+
+  <div>
+  <h5 class="card-header">Connection Details</h5>
+
+  <a [routerLink]="['/Add-Connection']"><button class="btn btn-primary mr-1 mat-elevation-z8" id="btn-align">Add Connection</button></a>
+
+  </div>
+
+
+
+<table class="table mat-elevation-z8 table-striped" id="table">
+
+  <thead style="font-weight: bold;">
+
+      <tr>
+
+          <td style="width: 2%;">S.No</td>
+
+          <td style="width: 5%;">Connection Name</td>
+
+          <td style="width: 5%;">System Port</td>
+
+          <td style="width: 2%;">System IP</td>
+
+          <td style="width: 5%;">Actions</td>
+
+      </tr>
+
+  </thead>
+
+
+
+  <tbody>
+
+      <tr *ngFor="let p of connection | paginate: { id: 'listing_pagination',
+      itemsPerPage: 10,
+      currentPage: page,
+      totalItems: totalRecords };let i = index">
+
+          <td>{{ i +1 }}</td>
+
+          <td>{{ p.connectionName }}</td>
+
+          <td>{{ p.systemPort }}</td>
+
+          <td>{{ p.systemIP }}</td>
+
+
+          <td>
+              <a [routerLink]="['/Edit-Connection', p.connectionId,1]">
+                  <mat-icon  matTooltip="Edit"
+                  matTooltipClass="icon-tooltip-red"
+                  aria-label="Button that shows a red tooltip"
+                  class="icon-button">edit</mat-icon>
+              </a>
+         <a  (click)="deleteConnection(p.connectionId)">
+                  <mat-icon  matTooltip="Delete"
+                  matTooltipClass="icon-tooltip-red"
+                  aria-label="Button that shows a red tooltip"
+                  class="icon-button">delete</mat-icon>
+              </a>
+
+              
+                  <a [routerLink]="['/Duplicate-Connection', p.connectionId,2]">
+                      <mat-icon  matTooltip="Duplicate"
+                      matTooltipClass="icon-tooltip-red"
+                      aria-label="Button that shows a red tooltip"
+                      class="icon-button">loupe</mat-icon>
+                  </a>
+              </td>
+
+      </tr>
+
+  </tbody>
+  <pagination-controls  id="listing_pagination" maxSize="10" directionLinks="true" (pageChange)="page = $event" ></pagination-controls>
+
+</table>
+
+</html>

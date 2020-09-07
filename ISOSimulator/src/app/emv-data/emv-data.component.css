@@ -1,0 +1,111 @@
+div.comp3 {
+    height: 755px;
+    width: 1275px;
+    left:310px;
+    overflow-y: scroll;
+  }
+
+
+
+
+
+
+
+
+
+
+/* 
+
+
+
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+}
+
+.foot-text-center {
+    position: relative;
+    bottom: -139px;
+    text-align: center;
+    background-color: #b80808;
+    height: 10px;
+    color: white;
+}
+
+.card-header {
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#user-text {
+    position: absolute;
+    left: 1098px;
+    top: 46px;
+    color: white;
+    text-size-adjust: 10px;
+    font-size: small;
+    font-family: -webkit-body;
+}
+
+#logout-icon {
+    position: absolute;
+    left: 1229px;
+    top: 46px;
+    color: white;
+    font-size: small;
+    font-family: -webkit-body;
+}
+
+.col-sm-3 {
+    flex: 0 0 25%;
+    max-width: 30%;
+}
+
+
+On small screens, set height to 'auto' for sidenav and grid
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {
+        height: auto;
+    }
+}
+
+.row {
+    float: left;
+}
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.navbar-inverse {
+    background-color: #b80808;
+    border-color: #ffffff;
+    border-bottom: 3px solid #333333;
+    position: relative;
+    height: 116px;
+}
+
+
+Add a gray background color and some padding to the footer
+
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+    width: 100%;
+}
+
+
+Set gray background color and 100% height
+
+.sidenav {
+    background-color: #f1f1f1;
+    height: 100%;
+} */

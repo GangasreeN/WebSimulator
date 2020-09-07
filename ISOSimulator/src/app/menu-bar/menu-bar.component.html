@@ -1,0 +1,42 @@
+<div class="page-container">
+  <div class="sidebar">
+    <div class="list-items">
+      <a *ngIf="userDetails.userType=='admin'" routerLink="/User-Profile" routerLinkActive="selected" class="list-item"
+        > User Profile  </a >
+      <a routerLink="/Card-List" routerLinkActive="selected" class="list-item"
+        > Configure Test Card
+       </a>
+      <a
+        routerLink="/List-Connection"
+        routerLinkActive="selected"
+        class="list-item"
+        >Configure Connections </a
+      >
+      <a
+        routerLink="/Run-Transaction"
+        routerLinkActive="selected"
+        class="list-item"
+        >Run a Transaction </a
+      >
+      <a
+        routerLink="/Edit-Script"
+        routerLinkActive="selected"
+        class="list-item"
+        >Edit Test Script</a
+      >
+      <a
+        routerLink="/Terminal-Setting"
+        routerLinkActive="selected"
+        class="list-item"
+        >Terminal Configuration</a
+      >
+      <a *ngIf="userDetails.userType=='admin'" routerLink="/Template-Configuration"
+      routerLinkActive="selected"
+      class="list-item"> Template Configuration</a>
+ 
+    </div>
+  </div>
+  <!-- <div class="page-content-container"> -->
+  <router-outlet></router-outlet>
+  <!-- </div> -->
+</div>

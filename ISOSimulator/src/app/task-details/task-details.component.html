@@ -1,0 +1,82 @@
+<div class="card m-3">
+  <h5 class="card-header">{{title}}</h5>
+  <div class="card-body">
+      <!--<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" [mustMatch]="['password', 'confirmPassword']" novalidate>-->
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"  novalidate>
+          <div class="form-row">
+               
+              <div class="form-group col-4">
+                <label>Task Name</label>
+                  <input type="text" name="taskName" placeholder="Enter Task Name" class="form-control" [(ngModel)]="model.taskName" #taskName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && taskName.invalid }" required>
+                  <div *ngIf="f.submitted && taskName.invalid" class="invalid-feedback">
+                      <div *ngIf="taskName.errors.required">Task Name is required</div>
+                  </div>
+              </div>
+              <div class="form-group col-4">
+                  <label>Story Count</label>
+                  <input type="text" name="storyCount" class="form-control" [(ngModel)]="model.storyCount" #storyCount="ngModel" [ngClass]="{ 'is-invalid': f.submitted && storyCount.invalid }" required>
+                  <div *ngIf="f.submitted && storyCount.invalid" class="invalid-feedback">
+                      <div *ngIf="storyCount.errors.required">Story Count is required</div>
+                  </div>
+              </div>
+              
+          </div>
+          <div class="form-row">
+            <div class="form-group col-4">
+                <label>Start Date</label>
+                <input type="date" name="startDate" class="form-control" [(ngModel)]="model.startDate" #startDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && startDate.invalid }" required>
+                <div *ngIf="f.submitted && startDate.invalid" class="invalid-feedback">
+                    <div *ngIf="startDate.errors.required">Start Date is required</div>
+                </div>
+            </div>
+          <div class="form-group col-4">
+              <label>End Date</label>
+              <input type="date" name="endDate" class="form-control" [(ngModel)]="model.endDate" #endDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && endDate.invalid }" required >
+              <div *ngIf="f.submitted && endDate.invalid" class="invalid-feedback">
+                  <div *ngIf="endDate.errors.required">End Date is required</div>
+              </div>
+          </div>
+          </div>
+          <div class="form-row">
+          <div class="form-group col-4">
+            <label>RAG Status</label>
+            <!--<input type="text" name="ragStatus" class="form-control" [(ngModel)]="model.ragStatus" #ragStatus="ngModel" [ngClass]="{ 'is-invalid': f.submitted && ragStatus.invalid }" required >-->
+            <select name ="ragStatus"class="form-control" [(ngModel)]="model.ragStatus" #ragStatus="ngModel" required>
+                <option value="">Select Status</option>
+                <option style="background-color:red; color: black;" value="R">R</option>
+                <option  style="background-color:yellow; color: black;" value="A">A</option>
+                <option style="background-color:green; color: black;" value="G">G</option>
+                <option style="background-color:white; color: black;" value="N">N</option>
+                <option style="background-color:blue; color: black;" value="I">I</option>
+            </select>
+            <div *ngIf="f.submitted && ragStatus.invalid" class="invalid-feedback">
+                <div *ngIf="ragStatus.errors.required">RAG Status is required</div>
+            </div>
+        </div>
+        <div class="form-group col-4">
+          <label>Work Status</label>
+          <!--<input type="text" name="workStatus" class="form-control" [(ngModel)]="model.workStatus" #workStatus="ngModel" [ngClass]="{ 'is-invalid': f.submitted && workStatus.invalid }" required >-->
+          <select name ="workStatus"class="form-control" [(ngModel)]="model.workStatus" #workStatus="ngModel" required>
+            <option value="">Select Status</option>
+            <option style="background-color:grey; color: black;" value="C">C</option>
+            <option style="background-color:pink; color: black;" value="D">D</option>
+            <option style="background-color:white; color: black;" value="N">N</option>
+        </select>
+          <div *ngIf="f.submitted && workStatus.invalid" class="invalid-feedback">
+              <div *ngIf="workStatus.errors.required">Work Status is required</div>
+          </div>
+      </div>
+          </div>
+      
+
+          
+        
+        
+          
+          <div class="text-center">
+              <button class="btn btn-primary mr-1">{{title}}</button>
+              <button class="btn btn-secondary" type="reset">Cancel</button>
+          </div>
+      </form>
+  </div>
+</div>

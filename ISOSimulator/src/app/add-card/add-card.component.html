@@ -1,0 +1,171 @@
+<style>
+    .card-header{
+      padding: 0.75rem 32.25rem;
+      margin-bottom: 0;
+      background-color: rgba(0,0,0,.03);
+      border-bottom: 1px solid rgba(0,0,0,.125);
+      margin-left: 2px;
+      width: 1275px;
+    }
+  </style>
+<div class="card-m-3">
+    <h5 class="card-header">{{title}}</h5>
+    <div class="card-body">
+        <!--<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" [mustMatch]="['password', 'confirmPassword']" novalidate>-->
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-row">
+                <legend>Card Detail :</legend><br>
+                <div class="form-group col-4">
+
+                    <label>Card Name</label><span class="required">*</span>
+
+                    <input type="text" name="cardName" placeholder="Enter Card Name" [readonly]="isReadonly" class="form-control" [(ngModel)]="model.cardName" #cardName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && cardName.invalid }" required>
+                    <div *ngIf="f.submitted && cardName.invalid" class="invalid-feedback">
+                        <div *ngIf="cardName.errors.required">Card Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-4">
+                    <label>Card Number</label><span class="required">*</span>
+                    <input type="text" name="cardNumber"  (keypress)="lettersOnly($event)" placeholder="Enter Card Number" [readonly]="isReadonly" minlength="15" maxlength="19" class="form-control" [(ngModel)]="model.cardNumber" #cardNumber="ngModel" [ngClass]="{ 'is-invalid': f.submitted && cardNumber.invalid }"
+                        required>
+                    <div *ngIf="f.submitted && cardNumber.invalid" class="invalid-feedback">
+                        <div *ngIf="cardNumber.errors.required">Card Number is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-4">
+
+                    <label>Expiry Date</label><span class="required">*</span>
+                    <input type="text" name="expiryDate"  (keypress)="lettersOnly($event)" placeholder="Enter Card Expiry" minlength="4" maxlength="4" class="form-control" [(ngModel)]="model.expiryDate" #expiryDate="ngModel" [ngClass]="{ 'is-invalid': f.submitted && expiryDate.invalid }" required>
+                    <div *ngIf="f.submitted && expiryDate.invalid" class="invalid-feedback">
+                        <div *ngIf="expiryDate.errors.required">Card Expiry is required</div>
+                    </div>
+                </div>
+                <!-- <div class="form-group col-4">
+                    <label>Created By</label>
+                    <input type="text" name="createdBy" placeholder="Enter Created By" class="form-control" [(ngModel)]="model.createdBy" #createdBy="ngModel" [ngClass]="{ 'is-invalid': f.submitted && createdBy.invalid }" required>
+                    <div *ngIf="f.submitted && createdBy.invalid" class="invalid-feedback">
+                        <div *ngIf="createdBy.errors.required">Created By is required</div>
+                    </div>
+                </div> -->
+
+            </div><br><br>
+            <div class="form-row">
+                <legend>Track Detail :</legend><br>
+                <div class="form-group col-4">
+
+                    <label>Discretionary Data</label><span class="required">*</span>
+                    <input type="text" name="discretionaryData" placeholder="Enter Discretionary Data" minlength="5" maxlength="15" class="form-control" [(ngModel)]="model.discretionaryData" #discretionaryData="ngModel" [ngClass]="{ 'is-invalid': f.submitted && discretionaryData.invalid }" required>
+                    <div *ngIf="f.submitted && discretionaryData.invalid" class="invalid-feedback">
+                        <div *ngIf="discretionaryData.errors.required">Discretionary Data is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-4">
+
+                    <label>Track1</label><span class="required">*</span>
+                    <input type="text" name="track1" placeholder="Enter Track 1" class="form-control" [(ngModel)]="model.track1" #track1="ngModel" [ngClass]="{ 'is-invalid': f.submitted && track1.invalid }" required>
+                    <div *ngIf="f.submitted && track1.invalid" class="invalid-feedback">
+                        <div *ngIf="track1.errors.required">Track1 is required</div>
+                    </div>
+                </div>
+                <!-- <div class="form-group col-4">
+                    <label>Track2</label>
+                    <input type="text" name="track2" placeholder="Enter Track 2" class="form-control" [(ngModel)]="model.track2" #track2="ngModel" [ngClass]="{ 'is-invalid': f.submitted && track2.invalid }" required>
+                    <div *ngIf="f.submitted && track2.invalid" class="invalid-feedback">
+                        <div *ngIf="track2.errors.required">Track2 is required</div>
+                    </div>
+                </div> -->
+                <div class="form-group col-4">
+                    <label>Track3</label><span class="required">*</span>
+                    <input type="text" name="track3" placeholder="Enter Track 3" class="form-control" [(ngModel)]="model.track3" #track3="ngModel" [ngClass]="{ 'is-invalid': f.submitted && track3.invalid }" required>
+                    <div *ngIf="f.submitted && track3.invalid" class="invalid-feedback">
+                        <div *ngIf="track3.errors.required">Track3 is required</div>
+                    </div>
+                </div>
+            </div><br>
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label>PIN</label><span class="required">*</span>
+                    <input type="text" name="pin" placeholder="Enter PIN"  (keypress)="lettersOnly($event)" minlength="4" maxlength="12" class="form-control" [(ngModel)]="model.pin" #pin="ngModel" [ngClass]="{ 'is-invalid': f.submitted && pin.invalid }" required>
+                    
+                    <div *ngIf="f.submitted && pin.invalid" class="invalid-feedback">
+                        <div *ngIf="pin.errors.required">PIN is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-4">
+                    <label>New PIN</label>
+                    <input type="text" name="newpin"  (keypress)="lettersOnly($event)" placeholder="Enter New PIN" minlength="4" maxlength="12" class="form-control" [(ngModel)]="model.newpin" #newpin="ngModel" [ngClass]="{ 'is-invalid': f.submitted && newpin.invalid }">
+                    <!-- <div *ngIf="f.submitted && newpin.invalid" class="invalid-feedback">
+                        <div *ngIf="newpin.errors.required">PIN is required</div>
+                    </div> -->
+                </div>
+
+                <div class="form-group col-4">
+                    <label>CVV2</label><span class="required">*</span>
+                    <input type="text"    (keypress)="lettersOnly($event)" minlength="3"   maxlength="3" name="cvv2" placeholder="Enter cvv2" class="form-control" [(ngModel)]="model.cvv2" #cvv2="ngModel" [ngClass]="{ 'is-invalid': f.submitted && cvv2.invalid }" required>
+                    <div *ngIf="f.submitted && cvv2.invalid" class="invalid-feedback">
+                        <div *ngIf="cvv2.errors.required">CVV2 is required</div>
+                    </div>
+                </div>
+            </div><br>
+
+
+
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label>Pin Pad Character</label><span class="required">*</span>
+                    <input type="text" name="pinBlock" placeholder="Enter Pin Block Data" class="form-control" [(ngModel)]="model.pinBlock" #pinBlock="ngModel" [ngClass]="{ 'is-invalid': f.submitted && pinBlock.invalid }" required>
+                    <div *ngIf="f.submitted && pinBlock.invalid" class="invalid-feedback">
+                        <div *ngIf="pinBlock.errors.required">Pin Pad Character is required</div>
+                    </div>
+                </div>
+                
+                <!-- <div class="form-group col-4">
+                    <label>Card Type</label>
+                    <input type="text" name="typeOfCard" placeholder="Enter Card Type" class="form-control" [(ngModel)]="model.typeOfCard" #typeOfCard="ngModel" [ngClass]="{ 'is-invalid': f.submitted && typeOfCard.invalid }" required>
+                    <div *ngIf="f.submitted && typeOfCard.invalid" class="invalid-feedback">
+                        <div *ngIf="typeOfCard.errors.required">Card Type is required</div>
+                    </div>
+                </div> -->
+
+                <div class="form-group col-4">
+                    <label>Card Type</label><span class="required">*</span>
+                    <select name="typeOfCard" placeholder="Select" class="form-control" [(ngModel)]="model.typeOfCard" #typeOfCard="ngModel" required>
+                  <option value="EMV">EMV</option>
+                  <option value="Magnetic Stripe" selected>Magnetic Stripe</option>
+                  <!-- <option style="background-color:green; color: black;" value="G">G</option>
+                  <option style="background-color:white; color: black;" value="N">N</option>
+                  <option style="background-color:blue; color: black;" value="I">I</option> -->
+              </select>
+                    <div *ngIf="f.submitted && typeOfCard.invalid" class="invalid-feedback">
+                        <div *ngIf="typeOfCard.errors.required">EMV Type is required</div>
+                    </div>
+                </div>
+            </div><br>
+            <!-- <div class="form-row">
+  
+                
+            </div><br> -->
+            <div *ngIf="model.typeOfCard=='EMV'">
+
+                <div class="text-center">
+                    <a [routerLink]="['/Edit-Emv-Data',model.cardId,2]"><button *ngIf="emvBtn ==1" class="btn btn-primary mr-1">{{button1}}</button></a>
+                    <button *ngIf="addEmvBtn ==0"  class="btn btn-primary mr-1">{{button}}</button>
+                    <a [routerLink]="['/Emv-Data',model.cardId,2]"><button *ngIf="addEmvBtn ==1 && emvBtn !=1" class="btn btn-primary mr-1">{{emvButton}}</button></a>
+                    <a [routerLink]="['/Card-List']"><button class="btn btn-secondary">Cancel</button></a>
+                    <!-- <button class="btn btn-secondary" type="reset">Cancel</button> -->
+                </div>
+            </div>
+
+
+
+
+
+            <div *ngIf="model.typeOfCard=='Magnetic Stripe'">
+                <div class="text-center">
+                    <button class="btn btn-primary mr-1">{{button}}</button>
+                    <a [routerLink]="['/Card-List']"><button class="btn btn-secondary">Cancel</button></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
